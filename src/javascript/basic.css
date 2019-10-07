@@ -1,0 +1,32 @@
+body {
+    background: #FF0099;  /* fallback for old browsers */
+    background: -webkit-linear-gradient(to right, #722F72, #FF0099);  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to right, #493240, #722F72, #FF0099); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    text-align: center;
+}
+
+h1 {
+    color: white;
+    text-shadow: black 1px 1px;
+}
+
+#myInput {
+    border: 2px solid black;
+    width: 30%;
+    height: 40px;
+    padding: 5px;
+}
+
+#myButton {
+    color: black;
+    background: white;
+    border: none;
+    padding: 10px;
+    outline: none;
+    cursor: pointer;
+}
+
+#myButton:hover {
+    color: white;
+    background: black;
+}
