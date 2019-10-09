@@ -1,114 +1,168 @@
+import { endianness } from "os";
+
 const syntax = {
     // DEFINE ATTRIBUTES / VARIABLES
         // number
         testNumber: value => {
-            if(!isNaN(value)) return true;
-            return false; 
+            if(!isNaN(value)) return `${value} is a number`;
+            return `${value} is not a number`;
         },
         // string
         testString: value => {
-            if(typeof(value) === "string") return true;
-            return false;
+            if(typeof(value) === "string") return `${value} is a string`;
+            return `${value} is not a string`;
         },
         // boolean
         testBoolean: value => {
-            if(typeof(value) === "boolean") return true;
-            return false;
+            if(typeof(value) === "boolean") return `${value} is a boolean`;
+            return `${value} is not a boolean`;
         },
         // array
         testArray: value => {
-            if(Array.isArray(value)) return true;
-            return false;
+            if(Array.isArray(value)) return "Array";
+            return `${value} is not an array`;
         },
 
         // dictionary / objects
         testObject: value => {
-            if(typeof(value) === "object") return true;
+            if(typeof(value) === "object") return "Object";
+            return `${value} is not an object`;
         },
 
         // undefined
         testUndefined: value => {
-            if(value === undefined) return true;
+            if(value === undefined) return `${value} is undefined`;
+            return `${value} is not undefined`;
         },
 
     // SAMPLE IF / ELSE
-        testLessThan10: value => {
-            if(value < 10) return true;
-            return false;
-        }
+        testIfElse: value => {
+            if(value < 10) return `${value} is less than 10`;
+            return `${value} is 10 or more`;
+        },
 
     // FUNCTIONS
         // parameters
-        function add(num1, num2) {
-            console.log(num1 + num2);
-        }
-        add(1, 2); // 3
-        
-        const subtract = (num1, num2) => {
-            console.log(num1 - num2);
-        }
-        subtract(2, 1); //1
+        testParameters: (parameter1, parameter2) => {
+            return `The paramaters are ${parameter1} & ${parameter2}`;
+        },
 
         // returns
-        function multiply(num1, num2) {
-            // return (num1 * num2);
-        }
+        testReturns: (parameter1, parameter2) => {
+            return `This function is returning ${parameter1} & ${parameter2}`;
+        },
 
     // ARRAYS
         // add to the front
-        numberArray.unshift(-1);
-        console.log(numberArray); // [-1, 0, 1, 2]
+        testUnshift: (arr) => {
+            if(Array.isArray(arr)) {
+                arr.unshift("hello");
+                return arr;
+            }
+            return "Not an array";
+        },
 
         // add to the end
-        numberArray.push(3);
-        console.log(numberArray); // [-1, 0, 1, 2, 3]
+        testPush: (arr) => {
+            if(Array.isArray(arr)) {
+                arr.push("hello");
+                return arr;
+            }
+            return "Not an array";
+        },
 
         // update values
-        numberArray[1] = 25;
-        console.log(numberArray); // [-1, 25, 1, 2, 3]
+        testUpdateArray: (arr) => {
+            if(Array.isArray(arr)) {
+                arr[0] = "updated";
+                return arr;
+            }
+            return "Not an array";
+        },
 
     // LOOPS
         // for
-        let total100 = 0;
-        for(let i = 0; i <= 100; i++) {
-            total100 += i;
-        }
-        console.log(total100);
+        testForLoop: (num) => {
+            if(typeof(num) === "number") {
+                let total = 0;
+                for(let i = 0; i <= num; i++) {
+                    total += i;
+                }
+                return(total);
+            }
+            return "Not a number";
+        },
 
         // for/in
-        const myPets = {
-            dog: "Grover",
-            cat: "Fluffy",
-            duck: "Quackers"
-        }
-        for (pet in myPets) {
-            console.log(`${pet}'s name is ${myPets[pet]}`);
-        }
+        testForIn: (obj) => {
+            let allObjects = "";
+            for (let key in obj) {
+                allObjects += `Key: ${key} Value: ${obj[key]}\n`;
+            }
+            return allObjects;
+        },
 
         // while
-        let i = 0;
-        let total200 = 0;
-        while(i <= 200) {
-            total200 += i;
-            i++;
-        }
-        console.log(total200);
+        testWhile: (num) => {
+            if(typeof(num) === "number") {
+                let i = 0;
+                let total = 0;
+                while(i <= num) {
+                    total += i;
+                    i++;
+                }
+                return total;
+            }
+            return "Not a number";
+        },
 
         // do while
-        i = 0;
-        let total300 = 0;
-        do {
-            total300 += i;
-            i++;
-        } while (i <= 300);
-        console.log(total300);
+        testDoWhile: (num) => {
+            if(typeof(num) === "number") {
+                let i = 0;
+                let total = 0;
+                do {
+                    total += i;
+                    i++;
+                } while (i <= num);
+                return total;
+            }
+            return "Not a number";
+        },
 
         // forEach (with array and function)
-
+        testForEach: (arr) => {
+            if(Array.isArray(arr)) {
+                let newArr = [];
+                arr.forEach((element) => {
+                    newArr.push(element += "hi");
+                })
+                return newArr;
+            }
+            return "Not an array";
+        },
 
     // OBJECTS / DICTIONARIES
         // declare object
+        testDeclareObject: () => {
+            const myPets = {
+                dog: "Grover",
+                cat: "Fluffy",
+                duck: "Quackers"
+            }
+            return myPets;
+        },
+
         // lookup key to retrieve value
+        testLookupKey: () => {
+            const myPets = {
+                dog: "Grover",
+                cat: "Fluffy",
+                duck: "Quackers"
+            }
+            return(myPets.duck);
+        }
+
 }
 
-export default syntaxTests;
+export default syntax;
