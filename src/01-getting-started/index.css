@@ -65,14 +65,38 @@ html {
     width: 50px;
 }
 
+#calc-section {
+    width: 30%;
+    margin: auto;
+    text-align: center;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.calc-inputs, .calc-buttons {
+    display: flex;
+}
+
+#calc-input1, #calc-input2 {
+    width: 25%;
+    flex: 1;
+}
+
+.calc-operator {
+    flex: 1;
+}
+
+#calc-output {
+    font-size: 3em;
+    text-shadow: 2px 2px #aaa;
+}
 
 /* Turn off parallax scrolling for tablets and phones */
 
-@media only screen and (max-device-width: 1600px) {
+/* @media only screen and (max-device-width: 1600px) {
     .bgimg-1,
     .bgimg-2,
     .bgimg-3 {
         background-attachment: scroll;
         min-height: 400px;
     }
-}
+} */
