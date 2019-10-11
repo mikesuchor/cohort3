@@ -1,20 +1,40 @@
+document.addEventListener('DOMContentLoaded', function () {
+    const input = document.querySelector("#canadian-taxes-input");
+    const button = document.querySelector("#canadian-taxes-button");
+    const output = document.querySelector("#canadian-taxes-output");
+    button.addEventListener("click", () => {
+        output.innerHTML = `$${canadianTaxes.calculateTaxes(input.value)}`;
+    });
+});
+
 const canadianTaxes = {
     calculateTaxes: (income) => {
-        let taxesOwing = 0;
-        if(income <= 47630) {
-            return (income * 0.15);
-        } else if(income > 47629) {
-            return ((income - 47629) * 0.205) + (47630 * 0.15);
-        } else if(income > 52408) {
+        const incomeInBracket1 = 47630;
+        const incomeInBracket2 = 95259;
+        const incomeInBracket3 = 147667;
+        const incomeInBracket4 = 210371;
 
+        if(income > incomeInBracket4) {
+            return Math.round((((income - incomeInBracket4) * 0.33)
+            + ((incomeInBracket4 - incomeInBracket3) * 0.29)
+            + ((incomeInBracket3 - incomeInBracket2) * 0.26)
+            + ((incomeInBracket2 - incomeInBracket1) * 0.205)
+            + (incomeInBracket1 * 0.15)) * 100) / 100;
+        } else if(income > incomeInBracket3) {
+            return Math.round((((income - incomeInBracket3) * 0.29)
+            + ((incomeInBracket3 - incomeInBracket2) * 0.26)
+            + ((incomeInBracket2 - incomeInBracket1) * 0.205)
+            + (incomeInBracket1 * 0.15)) * 100) / 100;
+        } else if(income > incomeInBracket2) {
+            return Math.round((((income - incomeInBracket2) * 0.26)
+            + ((incomeInBracket2 - incomeInBracket1) * 0.205)
+            + (incomeInBracket1 * 0.15)) * 100) / 100;
+        } else if(income > incomeInBracket1) {
+            return Math.round((((income - incomeInBracket1) * 0.205)
+            + (incomeInBracket1 * 0.15)) * 100) / 100;
+        } else {
+            return Math.round((income * 0.15) * 100) / 100;
         }
-        else if(income > 62704) {
-
-        }
-        else if(income > 210371) {
-            return ((income - 210371) * 0.33) + ((income - 62704) * 0.29) + ((income - 52408) * 0.26) + ((income - 47629) * 0.205) + (income * 0.15);
-        }
-        return 0;
     }
 }
 

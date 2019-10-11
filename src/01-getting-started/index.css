@@ -65,7 +65,7 @@ html {
     width: 50px;
 }
 
-#calc-section {
+#calc-section, #canadian-taxes-section {
     width: 30%;
     margin: auto;
     text-align: center;
@@ -85,9 +85,14 @@ html {
     flex: 1;
 }
 
-#calc-output {
+#calc-output, #canadian-taxes-output {
     font-size: 3em;
     text-shadow: 2px 2px #aaa;
+}
+
+#canadian-taxes-input {
+    display: block;
+    margin: auto;
 }
 
 /* Turn off parallax scrolling for tablets and phones */
