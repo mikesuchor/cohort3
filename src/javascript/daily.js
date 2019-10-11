@@ -12,23 +12,23 @@
     p2--> 2
 */
 
-// Write the function after this comment ---
 
-function assertEquals(value1, value2) {
-    if(value1 === value2) return true;
-    console.log("*** the two values are not the same")
-    console.log(`p1--> ${value1}`);
-    console.log(`p2--> ${value2}`);
-    return false;
-}
+const functions = {
+
+// Write the function after this comment ---
+    assertEquals: (value1, value2) => {
+        if(value1 === value2) return true;
+        console.log("*** the two values are not the same")
+        console.log(`p1--> ${value1}`);
+        console.log(`p2--> ${value2}`);
+        return false;
+    },
 
 // and before this comment ---
 
-assertEquals("a","b");
-assertEquals("a","a");
-assertEquals(1,2);
-assertEquals(2,2);
-assertEquals("2",2);
-assertEquals("This value","This value");
+    makeEmailArr: (arr) => {
+        return arr.join('.').concat("@evolveu.ca").toLowerCase()
+    }
+}
 
-export default assertEquals;
+export default functions;
