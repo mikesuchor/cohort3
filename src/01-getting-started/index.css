@@ -65,8 +65,8 @@ html {
     width: 50px;
 }
 
-#calc-section, #canadian-taxes-section {
-    width: 30%;
+#calc-section, #canadian-taxes-section, #arrays-section, #dictionaries-section {
+    width: 40%;
     margin: auto;
     text-align: center;
     font-family: Arial, Helvetica, sans-serif;
@@ -85,12 +85,11 @@ html {
     flex: 1;
 }
 
-#calc-output, #canadian-taxes-output {
-    font-size: 3em;
-    text-shadow: 2px 2px #aaa;
+#calc-output, #canadian-taxes-output, #arrays-message, #dictionaries-message {
+    font-size: 2em;
 }
 
-#canadian-taxes-input {
+#canadian-taxes-input, #arrays-input, #dictionaries-input {
     display: block;
     margin: auto;
 }
