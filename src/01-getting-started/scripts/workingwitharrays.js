@@ -1,42 +1,43 @@
-const input = document.querySelector("#arrays-input");
-const messageArea = document.querySelector("#arrays-message");
+document.addEventListener('DOMContentLoaded', function () {
+    const input = document.querySelector("#arrays-input");
+    document.querySelector("#arrays-add").addEventListener("click", () => {
+        if(input.value) {
+            workingWithArrays.addToArray(input.value);
+            document.querySelector("#arrays-message").innerHTML = `Added ${input.value} to array`;
+            input.value = "";
+        }
+    });
+    document.querySelector("#arrays-show").addEventListener("click", workingWithArrays.showArray);
+    document.querySelector("#arrays-total").addEventListener("click", () => {
+        document.querySelector("#arrays-message").innerHTML = workingWithArrays.totalArray();
+    });
+    document.querySelector("#arrays-clear").addEventListener("click", () => {
+        workingWithArrays.clearArray();
+        document.querySelector("#arrays-message").innerHTML = "Message Area";
+    });
+});
 
 const workingWithArrays = {
     arr: [],
 
     addToArray: (num) => {
         workingWithArrays.arr.push(Number(num));
-        input.value = ""
     },
 
     showArray: () => {
-        console.log(workingWithArrays.arr);
-        messageArea.innerHTML = workingWithArrays.arr;
-        input.value = "";
+        if(workingWithArrays.arr.length === 0) { document.querySelector("#arrays-message").innerHTML = "Message Area"; } 
+        else { document.querySelector( "#arrays-message").innerHTML = workingWithArrays.arr; }
     },
 
     totalArray: () => {
-        messageArea.innerHTML = workingWithArrays.arr.reduce((sum, num) => {
+        return workingWithArrays.arr.reduce((sum, num) => {
             return sum + num;
         });
-        input.value = "";
     },
 
     clearArray: () => {
         workingWithArrays.arr = [];
-        messageArea.innerHTML = "Message Area";
-        input.value = "";
     }
 }
-
-document.querySelector("#arrays-add").addEventListener("click", () => {
-    workingWithArrays.addToArray(input.value);
-});
-
-document.querySelector("#arrays-show").addEventListener("click", workingWithArrays.showArray);
-
-document.querySelector("#arrays-total").addEventListener("click", workingWithArrays.totalArray);
-
-document.querySelector("#arrays-clear").addEventListener("click", workingWithArrays.clearArray);
 
 export default workingWithArrays;
