@@ -15,11 +15,24 @@ html {
     line-height: 1.8;
 }
 
+section {
+    height: 30vh;
+}
+
+.image-title {
+    padding: 10px;
+    background: black;
+}
+
 
 /* Create a Parallax Effect */
 
 .bgimg-1,
-.bgimg-2 {
+.bgimg-2,
+.bgimg-3,
+.bgimg-4,
+.bgimg-5,
+.bgimg-6 {
     background-attachment: fixed;
     background-position: center;
     background-repeat: no-repeat;
@@ -48,6 +61,38 @@ html {
 .bgimg-2 {
     /* background-image: url("https://www.w3schools.com/w3images/parallax2.jpg"); */
     background-image: url("https://cdn.pixabay.com/photo/2016/11/19/15/32/code-1839877_960_720.jpg");
+    min-height: 400px;
+    opacity: 0.5;
+}
+
+/* Third image (Calculator) */
+
+.bgimg-3 {
+    background-image: url("https://cdn.pixabay.com/photo/2016/03/05/20/00/accountant-1238598_960_720.jpg");
+    min-height: 400px;
+    opacity: 0.5;
+}
+
+/* Fourth image (Canadian Taxes) */
+
+.bgimg-4 {
+    background-image: url("https://cdn.pixabay.com/photo/2015/10/16/08/46/coins-990693_960_720.jpg");
+    min-height: 400px;
+    opacity: 0.5;
+}
+
+/* Fifth image (Working with Arrays) */
+
+.bgimg-5 {
+    background-image: url("https://cdn.pixabay.com/photo/2015/03/05/17/34/calendar-660670_960_720.jpg");
+    min-height: 400px;
+    opacity: 0.5;
+}
+
+/* Sixth image (Working with Dictionaries) */
+
+.bgimg-6 {
+    background-image: url("https://cdn.pixabay.com/photo/2017/08/17/18/28/books-2652413_960_720.jpg");
     min-height: 400px;
     opacity: 0.5;
 }
