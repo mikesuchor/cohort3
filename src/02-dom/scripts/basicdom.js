@@ -15,3 +15,9 @@ document.querySelector("#show-items").addEventListener("click", () => {
         });
     }
 });
+
+document.querySelector("#delete-item").addEventListener("click", () => {
+    console.log(listOfStuff.children);
+    listOfStuff.lastChild.remove();
+    console.log(listOfStuff.children);
+});
