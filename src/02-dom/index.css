@@ -1,0 +1,14 @@
+#basic-dom-section {
+    width: 15%;
+    margin: auto;
+    border: 3px solid black;
+}
+
+#basic-dom-section h1 {
+    text-align: center;
+}
+
+#basic-dom-buttons {
+    margin-bottom: 20px;
+    text-align: center;
+}
