@@ -8,20 +8,32 @@
     <link rel="stylesheet" type="text/css" href="./index.css">
 </head>
 <body>
-    <div id="basic-dom-section">
-        <h1>Basic DOM</h1>
-        <ol id="list-of-stuff">This is a list of stuff
-            <li>Item 1</li>
-            <li>Item 2</li>
-            <li>Item 3</li>
-        </ol>
-        <div id="basic-dom-buttons">
-            <button id="show-items">Show</button>
-            <button id="add-item">Add</button>
-            <button id="delete-item">Delete</button>
+    <section id="basic-dom-section">
+        <div id="basic-dom-container">
+            <h1>Basic DOM</h1>
+            <ol id="basic-dom-list-of-stuff">This is a list of stuff
+                <li>Item 1</li>
+                <li>Item 2</li>
+                <li>Item 3</li>
+            </ol>
+            <div id="basic-dom-buttons">
+                <button id="basic-dom-show-items">Show</button>
+                <button id="basic-dom-add-item">Add</button>
+                <button id="basic-dom-delete-item">Delete</button>
+            </div>
+            <ol id="basic-dom-output-list"></ol>
         </div>
-        <ol id="output-list"></ol>
-    </div>
+    </section>
+    <section id="working-with-cards-section">
+        <h1>Working with Cards</h1>
+        <div id="panel-container">
+            <div id="left-panel">
+                <button id="add-card-btn">Add Card</button>
+            </div>
+            <div id="right-panel"></div>
+        </div>
+    </section>
     <script type="module" src="./scripts/basicdom.js"></script>
+    <script type="module" src="./scripts/workingwithcards.js"></script>
 </body>
 </html>

@@ -1,11 +1,11 @@
-const listOfStuff = document.querySelector("#list-of-stuff");
-const outputList = document.querySelector("#output-list");
+const listOfStuff = document.querySelector("#basic-dom-list-of-stuff");
+const outputList = document.querySelector("#basic-dom-output-list");
 
-document.querySelector("#add-item").addEventListener("click", () => {
+document.querySelector("#basic-dom-add-item").addEventListener("click", () => {
     listOfStuff.appendChild(document.createElement("li"));
 });
 
-document.querySelector("#show-items").addEventListener("click", () => {
+document.querySelector("#basic-dom-show-items").addEventListener("click", () => {
     outputList.innerText = "";
     if(listOfStuff.childElementCount !== outputList.childElementCount) {
         document.querySelectorAll("li").forEach((element) => {
@@ -16,7 +16,7 @@ document.querySelector("#show-items").addEventListener("click", () => {
     }
 });
 
-document.querySelector("#delete-item").addEventListener("click", () => {
+document.querySelector("#basic-dom-delete-item").addEventListener("click", () => {
     const listItems = listOfStuff.querySelectorAll("li");
     const lastItem = listItems[listItems.length - 1]
     lastItem.parentNode.removeChild(lastItem);
