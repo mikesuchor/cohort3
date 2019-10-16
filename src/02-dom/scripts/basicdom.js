@@ -17,7 +17,7 @@ document.querySelector("#show-items").addEventListener("click", () => {
 });
 
 document.querySelector("#delete-item").addEventListener("click", () => {
-    console.log(listOfStuff.children);
-    listOfStuff.lastChild.remove();
-    console.log(listOfStuff.children);
+    const listItems = listOfStuff.querySelectorAll("li");
+    const lastItem = listItems[listItems.length - 1]
+    lastItem.parentNode.removeChild(lastItem);
 });
