@@ -1,7 +1,7 @@
 #basic-dom-section {
     width: 300px;
     margin: auto;
-    height: 40vh;
+    min-height: 40vh;
 }
 
 #basic-dom-container {
@@ -36,7 +36,7 @@
 
 .card {
     height: 100px;
-    background: rgb(185, 37, 37);
+    background: rgb(82, 73, 206);
     margin: 10px;
     padding: 10px;
     animation-duration: 2s;
@@ -45,10 +45,12 @@
 
 @keyframes fadein {
     from {
-        background: rgb(236, 217, 217);
+        width: 50%;
+        background: rgb(191, 189, 221);
     }
 
     to {
-        background: rgb(185, 37, 37);
+        width: calc(100% - 40px);
+        background: rgb(82, 73, 206);
     }
 }
