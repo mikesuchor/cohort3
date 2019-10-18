@@ -2,10 +2,9 @@ let cardNumber = 1;
 const leftPanel = document.querySelector("#left-panel");
 
 document.addEventListener('DOMContentLoaded', () => {
-    const leftPanel = document.querySelector("#left-panel");
     const addCardButton = document.querySelector("#add-card-btn");
     addCardButton.addEventListener("click", () => {
-        leftPanel.appendChild(workingWithCards.addCard());
+        workingWithCards.addCard();
     });
 });
 
@@ -32,13 +31,13 @@ const workingWithCards = {
             cardTemplate.appendChild(addDeleteButton);
         leftPanel.appendChild(cardTemplate);
         document.querySelector(`#add-before-button${cardNumber}`).addEventListener("click", () => {
-            workingWithCards.addBefore(event);
+            workingWithCards.addBefore(event.target.parentElement);
         });
         document.querySelector(`#add-after-button${cardNumber}`).addEventListener("click", () => {
-            workingWithCards.addAfter(event);
+            workingWithCards.addAfter(event.target.parentElement);
         });
         document.querySelector(`#delete-button${cardNumber}`).addEventListener("click", () => {
-            workingWithCards.deleteCard(event);
+            workingWithCards.deleteCard(event.target.parentElement);
         });
         cardNumber++;
         return cardTemplate;
@@ -48,18 +47,17 @@ const workingWithCards = {
         return workingWithCards.createCard();
     },
 
-    addBefore: (event) => {
-        const card = event.target.parentElement;
+    addBefore: (card) => {
+        const leftPanel = document.querySelector("#left-panel");
         leftPanel.insertBefore(workingWithCards.addCard(), card);
     },
 
-    addAfter: (event) => {
-        const card = event.target.parentElement;
+    addAfter: (card) => {
+        const leftPanel = document.querySelector("#left-panel");
         leftPanel.insertBefore(workingWithCards.addCard(), card.nextSibling);
     },
 
-    deleteCard: (event) => {
-        const card = event.target.parentElement;
+    deleteCard: (card) => {
         card.remove();
     }
 }
