@@ -5,15 +5,15 @@ let cardNumber = 1;
 
 document.addEventListener('DOMContentLoaded', () => {
     addCardButton.addEventListener("click", () => {
-        leftPanel.appendChild(workingWithCards.createCard());
+        leftPanel.appendChild(workingWithCards.addCard());
     });
 });
 
 const workingWithCards = {
-    createCard: () => {
+    addCard: () => {
         const cardBody = document.createElement("div");
-        cardBody.setAttribute("class", "card");
         cardBody.setAttribute("id", `card${cardNumber}`);
+        cardBody.setAttribute("class", "card");
         const h1 = document.createElement("h1");
         h1.appendChild(document.createTextNode(`Card${cardNumber}`));
         cardBody.appendChild(h1);
@@ -43,25 +43,19 @@ const workingWithCards = {
         return cardBody;
     },
 
-    addCard: () => {
-
-    },
-
     addBefore: (event) => {
-        console.log("add before");
-        console.log(event.target.parentElement);
-        insertBefore(workingWithCards.createCard(), event.target.parentElement);
+        const card = event.target.parentElement;
+        leftPanel.insertBefore(workingWithCards.addCard(), card);
     },
 
     addAfter: (event) => {
-        console.log("add after");
-        console.log(event);
-        event.target.parentElement.appendChild(workingWithCards.createCard());
+        const card = event.target.parentElement;
+        card.parentElement.insertBefore(workingWithCards.addCard(), card.nextSibling);
     },
 
     deleteCard: (event) => {
-        console.log("delete card");
-        console.log(event);
+        const card = event.target.parentElement;
+        card.remove();
     }
 }
 
