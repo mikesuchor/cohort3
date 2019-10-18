@@ -7,13 +7,11 @@ document.querySelector("#basic-dom-add-item").addEventListener("click", () => {
 
 document.querySelector("#basic-dom-show-items").addEventListener("click", () => {
     outputList.innerText = "";
-    if(listOfStuff.childElementCount !== outputList.childElementCount) {
-        document.querySelectorAll("li").forEach((element) => {
-            const li = document.createElement("li");
-            li.appendChild(document.createTextNode(element.innerText));
-            outputList.appendChild(li);
-        });
-    }
+    document.querySelectorAll("li").forEach((element) => {
+        const li = document.createElement("li");
+        li.appendChild(document.createTextNode(element.innerText));
+        outputList.appendChild(li);
+    });
 });
 
 document.querySelector("#basic-dom-delete-item").addEventListener("click", () => {
