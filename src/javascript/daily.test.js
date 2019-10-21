@@ -1,22 +1,30 @@
 import functions from './daily';
 
 // Loop Staff Daily Exercise of October 21, 2019
+/*
+    Sample data for the next few exercises.
+*/
 
-test('email builder for company', () => {
-    const data = {
-        staff: [
-            { fname: "Jane", lname: "Smith", balance: 10 },
-            { fname: "Liam", lname: "Henry", balance: 1000 },
-            { fname: "Emma", lname: "Jones", balance: 1330 },
-            { fname: "Olivia", lname: "Notly", balance: 310 },
-            { fname: "Noah", lname: "Ho", balance: 503 },
-            { fname: "William", lname: "Lee", balance: 520 },
-            { fname: "Benjamin", lname: "Amis", balance: 150 },
-        ],
-        company: "EvolveU",
-        city: "Calgary",
-        prov: "Alberta"
-    };    
+const data = {
+    staff: [
+        { fname: "Jane", lname: "Smith", balance: 10 },
+        { fname: "Liam", lname: "Henry", balance: 1000 },
+        { fname: "Emma", lname: "Jones", balance: 1330 },
+        { fname: "Olivia", lname: "Notly", balance: 310 },
+        { fname: "Noah", lname: "Ho", balance: 503 },
+        { fname: "William", lname: "Lee", balance: 520 },
+        { fname: "Benjamin", lname: "Amis", balance: 150 },
+    ],
+    company: "EvolveU",
+    city: "Calgary",
+    prov: "Alberta"
+};
+
+/*	
+	Write the function to build email addresses for the company.
+*/
+
+test('email builder for company', () => {  
     const staffEmail = functions.loopStaff(data.staff);
     console.log(staffEmail);
     expect(staffEmail[0])

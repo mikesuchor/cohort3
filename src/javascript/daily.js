@@ -5,7 +5,7 @@ const functions = {
     loopStaff: (staffArr) => {
         const newArr = [];
         staffArr.forEach((staff) => {
-            return newArr.push(functions.makeEmailObj(staff));
+            newArr.push(functions.makeEmailObj(staff));
         });
         return newArr;
     },
