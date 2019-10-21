@@ -1,3 +1,5 @@
+const leftPanel = document.getElementById("left-panel");
+
 const workingWithCards = {
     cardNumber: 1,
     
@@ -6,19 +8,19 @@ const workingWithCards = {
             cardTemplate.id = `card${this.cardNumber}`;
             cardTemplate.classList.add("card");
         const h1 = document.createElement("h1");
-            h1.appendChild(document.createTextNode(`Card${this.cardNumber}`));
+            h1.innerText = `Card${this.cardNumber}`;
             cardTemplate.appendChild(h1);
         const addBeforeButton = document.createElement("button");
             addBeforeButton.id = `add-before-button${this.cardNumber}`;
-            addBeforeButton.appendChild(document.createTextNode("Add Before"));
+            addBeforeButton.innerText = "Add Before";
             cardTemplate.appendChild(addBeforeButton);
         const addAfterButton = document.createElement("button");
             addAfterButton.id = `add-after-button${this.cardNumber}`;
-            addAfterButton.appendChild(document.createTextNode("Add After"));
+            addAfterButton.innerText = "Add After";
             cardTemplate.appendChild(addAfterButton);
         const addDeleteButton = document.createElement("button");
             addDeleteButton.id = `delete-button${this.cardNumber}`;
-            addDeleteButton.appendChild(document.createTextNode("Delete"));
+            addDeleteButton.innerText = "Delete";
             cardTemplate.appendChild(addDeleteButton);
         leftPanel.appendChild(cardTemplate);
         this.cardNumber++;
