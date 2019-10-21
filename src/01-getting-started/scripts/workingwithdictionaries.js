@@ -12,10 +12,10 @@ const workingWithDictionaries = {
         sk: "Saskatchewan"
     },
 
-    lookup: (code) => {
-        for(let province in workingWithDictionaries.provinces) {
+    lookup(code) {
+        for(let province in this.provinces) {
             if(province === code) {
-                return workingWithDictionaries.provinces[code];
+                return this.provinces[code];
             }
         }
         return "Please enter a valid province code";

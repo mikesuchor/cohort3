@@ -1,28 +1,28 @@
 const workingWithArrays = {
     arr: [],
 
-    addToArray: (num) => {
-        workingWithArrays.arr.push(Number(num));
-        return workingWithArrays.arr;
+    addToArray(num) {
+        this.arr.push(Number(num));
+        return this.arr;
     },
 
-    showArray: () => {
-        if(workingWithArrays.arr.length === 0) {
+    showArray() {
+        if(this.arr.length === 0) {
             return "Message Area";
         }
         else {
-            return workingWithArrays.arr;
+            return this.arr;
         }
     },
 
-    totalArray: () => {
-        return workingWithArrays.arr.reduce((sum, num) => {
+    totalArray() {
+        return this.arr.reduce((sum, num) => {
             return sum + num;
         });
     },
 
-    clearArray: () => {
-        workingWithArrays.arr = [];
+    clearArray() {
+        this.arr = [];
     }
 }
 
