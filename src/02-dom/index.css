@@ -54,3 +54,7 @@
         background: rgb(82, 73, 206);
     }
 }
+
+.card:hover {
+    background: rgb(58, 50, 175);
+}
