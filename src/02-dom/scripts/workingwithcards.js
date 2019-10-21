@@ -9,7 +9,7 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 const workingWithCards = {
-    createCard: () => {
+    addCard: () => {
         const leftPanel = document.querySelector("#left-panel");
         const cardTemplate = document.createElement("div");
             cardTemplate.id = `card${cardNumber}`;
@@ -41,10 +41,6 @@ const workingWithCards = {
         });
         cardNumber++;
         return cardTemplate;
-    },
-
-    addCard: () => {
-        return workingWithCards.createCard();
     },
 
     addBefore: (card) => {
