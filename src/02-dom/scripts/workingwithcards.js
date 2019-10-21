@@ -1,6 +1,3 @@
-
-documentconst leftPanel = document.getElementById("left-panel");
-
 const workingWithCards = {
     cardNumber: 1,
     
