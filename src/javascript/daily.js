@@ -1,5 +1,15 @@
 const functions = {
 
+    // Loop Staff Daily Exercise of October 21, 2019
+
+    loopStaff: (staffArr) => {
+        const newArr = [];
+        staffArr.forEach((staff) => {
+            return newArr.push(functions.makeEmailObj(staff));
+        });
+        return newArr;
+    },
+
     // More Array Work Daily Exercise of October 16, 2019
 
     arrayMethods: {

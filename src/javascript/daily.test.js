@@ -1,5 +1,32 @@
 import functions from './daily';
 
+// Loop Staff Daily Exercise of October 21, 2019
+
+test('email builder for company', () => {
+    const data = {
+        staff: [
+            { fname: "Jane", lname: "Smith", balance: 10 },
+            { fname: "Liam", lname: "Henry", balance: 1000 },
+            { fname: "Emma", lname: "Jones", balance: 1330 },
+            { fname: "Olivia", lname: "Notly", balance: 310 },
+            { fname: "Noah", lname: "Ho", balance: 503 },
+            { fname: "William", lname: "Lee", balance: 520 },
+            { fname: "Benjamin", lname: "Amis", balance: 150 },
+        ],
+        company: "EvolveU",
+        city: "Calgary",
+        prov: "Alberta"
+    };    
+    const staffEmail = functions.loopStaff(data.staff);
+    console.log(staffEmail);
+    expect(staffEmail[0])
+        .toEqual("jane.smith@evolveu.ca");
+    expect(staffEmail[3])
+        .toEqual("olivia.notly@evolveu.ca");
+    expect(staffEmail[6])
+        .toEqual("benjamin.amis@evolveu.ca");
+});
+
 // More Array Work Daily Exercise of October 16, 2019
 
 test('example of an array slice', () => {
