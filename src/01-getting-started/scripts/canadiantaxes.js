@@ -1,12 +1,3 @@
-document.addEventListener('DOMContentLoaded', () => {
-    const input = document.querySelector("#canadian-taxes-input");
-    const button = document.querySelector("#canadian-taxes-button");
-    const output = document.querySelector("#canadian-taxes-output");
-    button.addEventListener("click", () => {
-        output.innerHTML = `You owe $${canadianTaxes.calculateTaxes(input.value)}`;
-    });
-});
-
 const canadianTaxes = {
     calculateTaxes: (income) => {
         const incomeInBracket1 = 47630;

@@ -110,7 +110,7 @@ section {
     width: 50px;
 }
 
-#calc-section, #canadian-taxes-section, #arrays-section, #dictionaries-section {
+section {
     width: 40%;
     margin: auto;
     text-align: center;

@@ -1,12 +1,3 @@
-document.addEventListener('DOMContentLoaded', function () {
-    const input = document.querySelector("#dictionaries-input");
-    const lookupButton = document.querySelector("#dictionaries-lookup");
-    const messageArea = document.querySelector("#dictionaries-message");
-    lookupButton.addEventListener("click", () => {
-        messageArea.innerHTML = workingWithDictionaries.lookup(input.value);
-    });
-});
-
 const workingWithDictionaries = {
     provinces: {
         ab: "Alberta",
