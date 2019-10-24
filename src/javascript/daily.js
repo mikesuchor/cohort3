@@ -1,5 +1,23 @@
 const functions = {
 
+    // Loop Staff in/of Daily Exercise of October 24, 2019
+
+    loopStaffIn: (staffArr) => {
+        const newArr = [];
+        for (let key in staffArr) {
+            newArr.push(functions.makeEmailObj(staffArr[key]));
+        }
+        return newArr;
+    },
+
+    loopStaffOf: (staffArr) => {
+        const newArr = [];
+        for(let item of staffArr) {
+            newArr.push(functions.makeEmailObj(item));
+        }
+        return newArr;
+    },
+
     // Loop Staff Daily Exercise of October 21, 2019
 
     loopStaff: (staffArr) => {
@@ -119,7 +137,7 @@ const functions = {
 
     assertEquals: (value1, value2) => {
         if(value1 === value2) return true;
-        console.log(`*** the two values are not the same\np1--> ${value1}\np2--> ${value2}`);
+        // console.log(`*** the two values are not the same\np1--> ${value1}\np2--> ${value2}`);
         return false;
     }
 }

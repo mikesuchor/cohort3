@@ -1,6 +1,5 @@
 import functions from './daily';
 
-// Loop Staff Daily Exercise of October 21, 2019
 /*
     Sample data for the next few exercises.
 */
@@ -20,19 +19,33 @@ const data = {
     prov: "Alberta"
 };
 
+// Loop Staff in/of Daily Exercise of October 24, 2019
+
+test('email builder for company using for in', () => {
+    const staffEmail = functions.loopStaffIn(data.staff);
+    expect(staffEmail[0]).toEqual("jane.smith@evolveu.ca");
+    expect(staffEmail[3]).toEqual("olivia.notly@evolveu.ca");
+    expect(staffEmail[6]).toEqual("benjamin.amis@evolveu.ca");
+});
+
+test('email builder for company using for of', () => {
+    const staffEmail = functions.loopStaffOf(data.staff);
+    expect(staffEmail[0]).toEqual("jane.smith@evolveu.ca");
+    expect(staffEmail[3]).toEqual("olivia.notly@evolveu.ca");
+    expect(staffEmail[6]).toEqual("benjamin.amis@evolveu.ca");
+});
+
+// Loop Staff Daily Exercise of October 21, 2019
+
 /*	
 	Write the function to build email addresses for the company.
 */
 
 test('email builder for company', () => {  
     const staffEmail = functions.loopStaff(data.staff);
-    console.log(staffEmail);
-    expect(staffEmail[0])
-        .toEqual("jane.smith@evolveu.ca");
-    expect(staffEmail[3])
-        .toEqual("olivia.notly@evolveu.ca");
-    expect(staffEmail[6])
-        .toEqual("benjamin.amis@evolveu.ca");
+    expect(staffEmail[0]).toEqual("jane.smith@evolveu.ca");
+    expect(staffEmail[3]).toEqual("olivia.notly@evolveu.ca");
+    expect(staffEmail[6]).toEqual("benjamin.amis@evolveu.ca");
 });
 
 // More Array Work Daily Exercise of October 16, 2019
