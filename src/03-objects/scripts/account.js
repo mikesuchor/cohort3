@@ -41,14 +41,16 @@ class AccountController {
     }
 
     highestValueAccount() {
-        return 0;
+        return this.accounts.reduce((highest, account) => {
+            return(highest.accountBalance > account.accountBalance) ? highest : account;
+        });
     }
 
     lowestValueAccount() {
-        return 0;
+        return this.accounts.reduce((lowest, account) => {
+            return(lowest.accountBalance < account.accountBalance) ? lowest : account;
+        });
     }
 }
-
-const checkingAccount = new Account("Checking Account", 25);
 
 export { Account, AccountController };

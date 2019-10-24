@@ -54,7 +54,7 @@ describe('test AccountController', () => {
         expect(accountController.removeAccount("joint account")).toEqual([]);
     });
 
-    test.only('total the amount in all accounts', () => {
+    test('total the amount in all accounts', () => {
         const accountController = new AccountController();
         expect(accountController.addAccount("savings account", 50));
         expect(accountController.totalAllAccounts()).toBe(50);
@@ -62,21 +62,27 @@ describe('test AccountController', () => {
         expect(accountController.totalAllAccounts()).toBe(5050);
     });
 
-    // test('find the highest value account', () => {
-    //     const accountController = new AccountController();
-    //     accountController.addAccount("savings account", 50);
-    //     accountController.addAccount("joint account", 5000);
-    //     accountController.addAccount("stock account", 2500);
-    //     expect(accountController.highestValueAccount()).toBe(5000);
-    // });
+    test('find the highest value account', () => {
+        const accountController = new AccountController();
+        accountController.addAccount("savings account", 50);
+        expect(accountController.highestValueAccount()).toEqual({"accountBalance": 50, "accountName": "savings account"});
+        accountController.addAccount("joint account", 5000);
+        accountController.addAccount("stock account", 2500);
+        expect(accountController.highestValueAccount()).toEqual({"accountBalance": 5000, "accountName": "joint account"});
+        accountController.removeAccount("joint account");
+        expect(accountController.highestValueAccount()).toEqual({"accountBalance": 2500, "accountName": "stock account"});
+    });
 
-    // test('find the lowest value account', () => {
-    //     const accountController = new AccountController();
-    //     accountController.addAccount("savings account", 50);
-    //     accountController.addAccount("joint account", 5000);
-    //     accountController.addAccount("stock account", 2500);
-    //     expect(accountController.lowestValueAccount()).toBe(50);
-    // });
+    test('find the lowest value account', () => {
+        const accountController = new AccountController();
+        accountController.addAccount("savings account", 50);
+        expect(accountController.lowestValueAccount()).toEqual({"accountBalance": 50, "accountName": "savings account"});
+        accountController.addAccount("joint account", 5000);
+        accountController.addAccount("stock account", 2500);
+        expect(accountController.lowestValueAccount()).toEqual({"accountBalance": 50, "accountName": "savings account"});
+        accountController.removeAccount("savings account");
+        expect(accountController.lowestValueAccount()).toEqual({"accountBalance": 2500, "accountName": "stock account"});
+    });
 });
 
 test('format money helper function', () => {
