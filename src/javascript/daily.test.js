@@ -19,6 +19,22 @@ const data = {
     prov: "Alberta"
 };
 
+// Loop Staff each/map of October 25, 2019
+
+test('email builder for company using forEach', () => {
+    const staffEmail = functions.loopStaffForEach(data.staff);
+    expect(staffEmail[0]).toEqual("jane.smith@evolveu.ca");
+    expect(staffEmail[3]).toEqual("olivia.notly@evolveu.ca");
+    expect(staffEmail[6]).toEqual("benjamin.amis@evolveu.ca");
+});
+
+test('email builder for company using map', () => {
+    const staffEmail = functions.loopStaffMap(data.staff);
+    expect(staffEmail[0]).toEqual("jane.smith@evolveu.ca");
+    expect(staffEmail[3]).toEqual("olivia.notly@evolveu.ca");
+    expect(staffEmail[6]).toEqual("benjamin.amis@evolveu.ca");
+});
+
 // Loop Staff in/of Daily Exercise of October 24, 2019
 
 test('email builder for company using for in', () => {

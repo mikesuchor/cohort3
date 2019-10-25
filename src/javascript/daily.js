@@ -1,19 +1,36 @@
 const functions = {
 
+    // Loop Staff each/map of October 25, 2019
+
+    loopStaffForEach: (staffArr) => {
+        const newArr = [];
+        staffArr.forEach((person) => {
+            newArr.push(functions.makeEmailObj(person));
+        });
+        return newArr;
+    },
+
+    loopStaffMap: (staffArr) => {
+        return staffArr.map((person) => {
+            console.log("person" + person + "index" + index + "array" + array)
+            return functions.makeEmailObj(person);
+        });
+    },
+
     // Loop Staff in/of Daily Exercise of October 24, 2019
 
     loopStaffIn: (staffArr) => {
         const newArr = [];
-        for (let key in staffArr) {
-            newArr.push(functions.makeEmailObj(staffArr[key]));
+        for (let person in staffArr) {
+            newArr.push(functions.makeEmailObj(staffArr[person]));
         }
         return newArr;
     },
 
     loopStaffOf: (staffArr) => {
         const newArr = [];
-        for(let item of staffArr) {
-            newArr.push(functions.makeEmailObj(item));
+        for(let person of staffArr) {
+            newArr.push(functions.makeEmailObj(person));
         }
         return newArr;
     },
