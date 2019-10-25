@@ -12,7 +12,6 @@ const functions = {
 
     loopStaffMap: (staffArr) => {
         return staffArr.map((person) => {
-            console.log("person" + person + "index" + index + "array" + array)
             return functions.makeEmailObj(person);
         });
     },
