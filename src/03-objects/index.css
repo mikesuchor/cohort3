@@ -8,49 +8,65 @@ body {
     background-color: #bbb;
 }
 
-#account {
+#account-creator {
     text-align: center;
-    margin: auto;
-    width: 400px;
+}
+
+#account-creator button {
+    background-color: #444;
+}
+
+#accounts {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.account {
+    text-align: center;
+    width: 28%;
     border: 3px solid black;
     border-radius: 10px;
     padding: 20px;
     background-color: white;
+    margin: 5px;
 }
 
 h2 {
     font-size: 48px;
     color: black;
     margin-bottom: 20px;
+    text-transform: capitalize;
 }
 
-#amount-input {
-    width: 185px;
+.amount-input {
+    width: 195px;
     height: 25px;
 }
 
 .action-button {
-    width: 100px;
+    width: 85px;
     height: 29px;
     border: none;
     color: white;
     outline: none;
+    margin-left: 5px;
 }
 
-#deposit-button {
+.deposit-button {
     background: #0000FF;
 }
 
-#deposit-button:hover {
+.deposit-button:hover {
     background: #00004B;
     cursor: pointer;
 }
 
-#withdraw-button {
+.withdraw-button {
     background: #FF0000;
 }
 
-#withdraw-button:hover {
+.withdraw-button:hover {
     background: #4B0000;
     cursor: pointer;
 }

@@ -85,7 +85,9 @@ describe('test AccountController', () => {
     });
 });
 
-test('format money helper function', () => {
-    expect(helpers.formatMoney(100)).toBe(100);
-    expect(helpers.formatMoney(11.1133231)).toBe(11.11);
-});
+describe('test helpers', () => {
+    test('format money helper function', () => {
+        expect(helpers.formatMoney(100)).toBe(100);
+        expect(helpers.formatMoney(11.1133231)).toBe(11.11);
+    });
+})

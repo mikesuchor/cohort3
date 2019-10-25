@@ -17,12 +17,26 @@ class Account {
     balance() { return this.accountBalance; }
 }
 
+const newAccount = new Account("checking account", 500);
+
 class AccountController {
     constructor() {
         this.accounts = [];
     }
 
     addAccount(name, accountBalance) {
+        if(!name) {
+            return;
+        }
+        // if(this.accounts.length > 0) {
+        //     this.accounts.filter((account) => {
+        //         console.log(helpers.formatName(name));
+        //         console.log(helpers.formatName(account.accountName));
+        //         return helpers.formatName(name) !== helpers.formatName(account.accountName)
+        //     })
+        //     return;
+        // };
+        // helpers.createCard(accounts, name, accountBalance);
         this.accounts.push(new Account(name, accountBalance));
         return this.accounts;
     }
