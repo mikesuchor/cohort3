@@ -1,32 +1,42 @@
 import workingWithCards from './workingwithcards';
 
+beforeEach(() => {
+    workingWithCards.cardNumber = 0;
+})
+
 test('adding a card to the DOM', () => {
-    // document.body.innerHTML = `<div id="left-panel"></div>`
     const leftPanel = document.createElement("div");
-    leftPanel.id = "left-panel";
-    document.body.appendChild(leftPanel);
-    // Make sure <div id="left-panel"></div> exists
-    expect(document.querySelector("#left-panel").id).toBe("left-panel");
-    // No card should exist yet
-    expect(document.querySelector("#card1")).toBe(null);
-    // Add a card appended to #left-panel
-    workingWithCards.addCard();
-    // Make sure <div id="left-panel"><div id="card1"></div></div> exists
-    expect(document.querySelector("#card1").id).toBe("card1");
+    workingWithCards.addCard(leftPanel);
+    expect(leftPanel.children[0].id).toBe("card1");
+    workingWithCards.addCard(leftPanel);
+    expect(leftPanel.children[1].id).toBe("card2");
 });
 
 test('adding a card before selected card', () => {
-    workingWithCards.addBefore(document.querySelector("#card1"));
-    expect(document.querySelector("#left-panel").children[0].id).toBe("card2");
+    const leftPanel = document.createElement("div");
+    workingWithCards.addCard(leftPanel);
+    workingWithCards.addBefore(leftPanel, leftPanel.children[0]);
+    expect(leftPanel.children[0].id).toBe("card2");
+    workingWithCards.addBefore(leftPanel, leftPanel.children[0]);
+    expect(leftPanel.children[0].id).toBe("card3");
+    expect(leftPanel.children[1].id).toBe("card2");
 });
 
 test('adding a card after selected card', () => {
-    workingWithCards.addAfter(document.querySelector("#card1"));
-    expect(document.querySelector("#left-panel").children[2].id).toBe("card3");
+    const leftPanel = document.createElement("div");
+    workingWithCards.addCard(leftPanel);
+    workingWithCards.addAfter(leftPanel, leftPanel.children[0]);
+    expect(leftPanel.children[1].id).toBe("card2");
+    workingWithCards.addAfter(leftPanel, leftPanel.children[1]);
+    expect(leftPanel.children[2].id).toBe("card3");
+    workingWithCards.addAfter(leftPanel, leftPanel.children[2]);
+    expect(leftPanel.children[3].id).toBe("card4");
 });
 
 test('deleting selected card', () => {
-    expect(document.querySelector("#card1").id).toBe("card1");
-    workingWithCards.deleteCard(document.querySelector("#card1"));
-    expect(document.querySelector("#card1")).toBe(null)
+    const leftPanel = document.createElement("div");
+    workingWithCards.addCard(leftPanel);
+    expect(leftPanel.children[0].id).toBe("card1");
+    workingWithCards.deleteCard(leftPanel.children[0]);
+    expect(leftPanel.children[0]).toBe(undefined);
 });

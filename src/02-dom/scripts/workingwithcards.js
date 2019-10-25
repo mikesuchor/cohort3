@@ -1,9 +1,8 @@
-const leftPanel = document.getElementById("left-panel");
-
 const workingWithCards = {
-    cardNumber: 1,
+    cardNumber: 0,
     
-    addCard() {
+    addCard(target) {
+        this.cardNumber++;
         const cardTemplate = document.createElement("div");
             cardTemplate.id = `card${this.cardNumber}`;
             cardTemplate.classList.add("card");
@@ -22,17 +21,16 @@ const workingWithCards = {
             addDeleteButton.id = `delete-button${this.cardNumber}`;
             addDeleteButton.innerText = "Delete";
             cardTemplate.appendChild(addDeleteButton);
-        leftPanel.appendChild(cardTemplate);
-        this.cardNumber++;
+        target.appendChild(cardTemplate);
         return cardTemplate;
     },
 
-    addBefore(card) {
-        leftPanel.insertBefore(this.addCard(), card);
+    addBefore(target, card) {
+        target.insertBefore(this.addCard(target), card);
     },
 
-    addAfter(card) {
-        leftPanel.insertBefore(this.addCard(), card.nextSibling);
+    addAfter(target, card) {
+        target.insertBefore(this.addCard(target), card.nextSibling);
     },
 
     deleteCard(card) {
