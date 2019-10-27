@@ -5,17 +5,6 @@ const accountController = new AccountController();
 const helpers = {
     cardCount: 0,
 
-    formatMoney: (amount) => {
-        return Math.round(amount * 100) / 100;
-    },
-
-    formatName: (name) => {
-        return name.toLowerCase()
-            .split(' ')
-            .map((c) => c.charAt(0).toUpperCase() + c.substring(1))
-            .join(' ');
-    },
-
     clearInputs: (input1, input2) => {
         input1.value = "";
         input2.value = "";
@@ -25,11 +14,13 @@ const helpers = {
         if(!name) {
             return;
         }
-        accountController.addAccount(name, accountBalance);
         this.cardCount++;
         const accountCardTemplate = document.createElement("div");
             accountCardTemplate.id = name;
             accountCardTemplate.classList.add("account");
+        const deleteIcon = document.createElement("i");
+            deleteIcon.classList.add("fas", "fa-times");
+            accountCardTemplate.appendChild(deleteIcon);
         const bankIcon = document.createElement("i");
             bankIcon.classList.add("fas", "fa-university", "fa-4x");
             accountCardTemplate.appendChild(bankIcon);

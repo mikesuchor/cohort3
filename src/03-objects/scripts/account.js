@@ -1,7 +1,7 @@
 class Account {
     constructor(accountName, accountBalance) {
-        this.accountName = accountName;
-        this.accountBalance = accountBalance;
+        this.accountName = this.formatName(accountName);
+        this.accountBalance = this.formatMoney(accountBalance);
     }
 
     deposit(amount) {
@@ -15,9 +15,18 @@ class Account {
     }
 
     balance() { return this.accountBalance; }
-}
 
-const newAccount = new Account("checking account", 500);
+    formatMoney(amount) {
+        return Math.round(amount * 100) / 100;
+    }
+
+    formatName(name) {
+        return name.toLowerCase()
+            .split(' ')
+            .map((c) => c.charAt(0).toUpperCase() + c.substring(1))
+            .join(' ');
+    }
+}
 
 class AccountController {
     constructor() {

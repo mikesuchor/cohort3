@@ -8,12 +8,22 @@ body {
     background-color: #bbb;
 }
 
-#account-creator {
+#account-creator, #account-functions {
     text-align: center;
 }
 
-#account-creator button {
+.account-input, .account-amount-input {
+    height: 25px;
+    margin-bottom: 5px;
+}
+
+#account-creator button, #account-functions button {
     background-color: #444;
+}
+
+#account-functions button {
+    width: 200px;
+    margin-bottom: 5px;
 }
 
 #accounts {
@@ -30,6 +40,12 @@ body {
     padding: 20px;
     background-color: white;
     margin: 5px;
+}
+
+.fa-times {
+    display: block;
+    text-align: right;
+    color: #FF0000;
 }
 
 h2 {
@@ -69,4 +85,8 @@ h2 {
 .withdraw-button:hover {
     background: #4B0000;
     cursor: pointer;
+}
+
+.hidden {
+    display: none;
 }
