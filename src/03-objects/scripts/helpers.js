@@ -1,3 +1,7 @@
+import { AccountController } from './account.js';
+
+const accountController = new AccountController();
+
 const helpers = {
     cardCount: 0,
 
@@ -12,10 +16,19 @@ const helpers = {
             .join(' ');
     },
 
-    createCard(target, name, accountBalance) {
+    clearInputs: (input1, input2) => {
+        input1.value = "";
+        input2.value = "";
+    },
+
+    createCard(name, accountBalance, target) {
+        if(!name) {
+            return;
+        }
+        accountController.addAccount(name, accountBalance);
         this.cardCount++;
         const accountCardTemplate = document.createElement("div");
-            accountCardTemplate.id = this.cardCount;
+            accountCardTemplate.id = name;
             accountCardTemplate.classList.add("account");
         const bankIcon = document.createElement("i");
             bankIcon.classList.add("fas", "fa-university", "fa-4x");
@@ -40,6 +53,7 @@ const helpers = {
             input.placeholder = "Amount to Deposit / Withdraw";
             accountCardTemplate.appendChild(input);
         const depositButton = document.createElement("button");
+            depositButton.id = `deposit-button${this.cardCount}`;
             depositButton.classList.add("deposit-button", "action-button");
             depositButton.innerText = " Deposit";
             const depositIcon = document.createElement("i");
@@ -47,6 +61,7 @@ const helpers = {
                 depositButton.prepend(depositIcon);
             accountCardTemplate.appendChild(depositButton);
         const withdrawButton = document.createElement("button");
+            withdrawButton.id = `withdraw-button${this.cardCount}`;
             withdrawButton.classList.add("withdraw-button", "action-button");
             withdrawButton.innerText = "Withdraw ";
             const withdrawIcon = document.createElement("i");
@@ -58,8 +73,7 @@ const helpers = {
     },
 
     removeCard(name) {
-        console.log(name);
-        document.querySelector("").remove();
+        document.getElementById(name).remove();
     }
 }
 
