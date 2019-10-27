@@ -1,7 +1,7 @@
 class Account {
     constructor(accountName, accountBalance) {
-        this.accountName = this.formatName(accountName);
-        this.accountBalance = this.formatMoney(accountBalance);
+        this.accountName = accountName;
+        this.accountBalance = accountBalance;
     }
 
     deposit(amount) {
@@ -19,13 +19,6 @@ class Account {
     formatMoney(amount) {
         return Math.round(amount * 100) / 100;
     }
-
-    formatName(name) {
-        return name.toLowerCase()
-            .split(' ')
-            .map((c) => c.charAt(0).toUpperCase() + c.substring(1))
-            .join(' ');
-    }
 }
 
 class AccountController {
@@ -37,15 +30,6 @@ class AccountController {
         if(!name) {
             return;
         }
-        // if(this.accounts.length > 0) {
-        //     this.accounts.filter((account) => {
-        //         console.log(helpers.formatName(name));
-        //         console.log(helpers.formatName(account.accountName));
-        //         return helpers.formatName(name) !== helpers.formatName(account.accountName)
-        //     })
-        //     return;
-        // };
-        // helpers.createCard(accounts, name, accountBalance);
         this.accounts.push(new Account(name, accountBalance));
         return this.accounts;
     }
