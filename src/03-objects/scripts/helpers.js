@@ -1,7 +1,3 @@
-import { AccountController } from './account.js';
-
-const accountController = new AccountController();
-
 const helpers = {
     cardCount: 0,
 
@@ -24,13 +20,10 @@ const helpers = {
         const bankIcon = document.createElement("i");
             bankIcon.classList.add("fas", "fa-university", "fa-4x");
             accountCardTemplate.appendChild(bankIcon);
-        const accountName = document.createElement("h1");
+        const accountName = document.createElement("h2");
             accountName.classList.add("account-name");
             accountName.innerText = name;
             accountCardTemplate.appendChild(accountName);
-        const balanceHeader = document.createElement("h3");
-            balanceHeader.innerText = "Current Balance";
-            accountCardTemplate.appendChild(balanceHeader);
         const balanceOutput = document.createElement("h2");
             balanceOutput.id = `balance${this.cardCount}`;
             balanceOutput.classList.add("balance-output");
@@ -64,7 +57,7 @@ const helpers = {
     },
 
     removeCard(name) {
-        document.getElementById(name).remove();
+        name.remove();
     }
 }
 

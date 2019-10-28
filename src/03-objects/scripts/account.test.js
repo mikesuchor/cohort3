@@ -29,11 +29,18 @@ describe('test Account class', () => {
         expect(checkingAccount.withdraw(30)).toBe(5);
         expect(checkingAccount.balance()).toBe(5);
     });
+
+    test('format money helper function', () => {
+        const checkingAccount = new Account("Checking Account", 25);
+        expect(checkingAccount.formatMoney(100)).toBe(100);
+        expect(checkingAccount.formatMoney(11.1133231)).toBe(11.11);
+    });
 });
 
 describe('test AccountController', () => {
     test('test adding an account', () => {
         const accountController = new AccountController();
+        expect(accountController.addAccount("", 50)).toEqual(undefined);
         expect(accountController.addAccount("savings account", 50))
             .toEqual([{"accountName": "savings account", "accountBalance": 50}]);
         expect(accountController.addAccount("joint account", 5000))
@@ -86,8 +93,28 @@ describe('test AccountController', () => {
 });
 
 describe('test helpers', () => {
-    test('format money helper function', () => {
-        expect(helpers.formatMoney(100)).toBe(100);
-        expect(helpers.formatMoney(11.1133231)).toBe(11.11);
+    test('clear inputs', () => {
+        const input1 = document.createElement("input");
+        input1.value = "clear me";
+        const input2 = input1;
+        helpers.clearInputs(input1, input2);
+        expect(input1.value).toBe("");
+        expect(input2.value).toBe("");
     });
-})
+
+    test('create card', () => {
+        const testDiv = document.createElement("div");
+        helpers.createCard("", 200, testDiv);
+        expect(testDiv.children[0]).toBe(undefined);
+        helpers.createCard("test", 200, testDiv);
+        expect(testDiv.children[0].id).toBe("test");
+    });
+
+    test('remove card', () => {
+        const testDiv = document.createElement("div");
+        helpers.createCard("test", 200, testDiv);
+        expect(testDiv.children[0].id).toBe("test");
+        helpers.removeCard("test");
+        expect(testDiv.children[0]).toBe(undefined);
+    });
+});
