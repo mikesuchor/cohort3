@@ -7,12 +7,11 @@ const accountFunctions = document.getElementById("account-functions");
 const accountFunctionsOutput = document.getElementById("account-functions-output");
 const newAccountName = document.querySelector(".account-input");
 const newAccountAmount = document.querySelector(".account-amount-input");
-const amountInput = document.querySelector(".amount-input");
+const amountInput = document.getElementById("input");
 
 document.addEventListener("click", () => {
-
     if(event.target.className === "add-button action-button") {
-        accountController.addAccount(newAccountName.value, newAccountAmount.value);
+        accountController.addAccount(newAccountName.value, Number(newAccountAmount.value));
         helpers.createCard(newAccountName.value, newAccountAmount.value, accounts);
         helpers.clearInputs(newAccountName, newAccountAmount);
         console.log(accountController.accounts)
@@ -44,14 +43,14 @@ document.addEventListener("click", () => {
 
     if(event.target.className === "deposit-button action-button" || event.target.className === "fas fa-sign-in-alt") {
         const accountIndex = accountController.accounts.findIndex(x => x.accountName === event.target.parentNode.id);
-        console.log(event.target.parentNode.id);
-        document.getElementById(`balance${helpers.cardCount}`)
+        console.log(document.getElementById(`balance${event.target.parentNode.id}`).previousSibling);
+        document.getElementById(`balance${event.target.parentNode.id}`)
             .innerText = accountController.accounts[accountIndex].deposit(500);
     }
 
     if(event.target.className === "withdraw-button action-button" || event.target.className === "fas fa-sign-out-alt") {
-        console.log(event.target.parentNode.id);
-        document.getElementById(`balance${helpers.cardCount}`)
-            .innerText = checkingAccount.withdraw(amountInput.value);
+        const accountIndex = accountController.accounts.findIndex(x => x.accountName === event.target.parentNode.id);
+        document.getElementById(`balance${event.target.parentNode.id}`)
+            .innerText = accountController.accounts[accountIndex].withdraw(500);
     }
 });

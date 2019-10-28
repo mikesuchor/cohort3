@@ -27,9 +27,7 @@ class AccountController {
     }
 
     addAccount(name, accountBalance) {
-        if(!name) {
-            return;
-        }
+        if(!name) return;
         this.accounts.push(new Account(name, accountBalance));
         return this.accounts;
     }

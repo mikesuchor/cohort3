@@ -6,24 +6,62 @@
 
 body {
     background-color: #bbb;
+    background: url('https://cdn.pixabay.com/photo/2013/07/18/10/56/gold-163519_960_720.jpg');
+    background-size: cover;
+}
+
+h1 {
+    text-transform: capitalize;
+}
+
+h2 {
+    font-size: 48px;
+    color: black;
+    margin-bottom: 20px;
+    text-transform: capitalize;
 }
 
 #account-creator, #account-functions {
     text-align: center;
 }
 
+#account-creator h1 {
+    color: white;
+    text-shadow: 2px 2px black;
+}
+
 .account-input, .account-amount-input {
     height: 25px;
     margin-bottom: 5px;
-}
-
-#account-creator button, #account-functions button {
-    background-color: #444;
+    width: 180px;
+    border: 2px solid black;
+    padding-left: 15px;
 }
 
 #account-functions button {
-    width: 200px;
+    width: 225px;
     margin-bottom: 5px;
+}
+
+#account-functions-output {
+    color: white;
+    text-shadow: 1px 1px black;
+}
+
+.action-button {
+    background-color: #222;
+    width: 90px;
+    height: 29px;
+    border: none;
+    color: white;
+    outline: none;
+    margin-left: 5px;
+}
+
+.action-button:hover {
+    background-color: #000;
+    cursor: pointer;
+    color: rgb(184, 139, 28);
 }
 
 #accounts {
@@ -42,49 +80,28 @@ body {
     margin: 5px;
 }
 
+.fa-coins, .fa-long-arrow-alt-up, .fa-long-arrow-alt-down, .fa-university, .fa-sign-in-alt, .fa-sign-out-alt {
+    color: rgb(184, 139, 28);
+}
+
 .fa-times {
     display: block;
     text-align: right;
     color: #FF0000;
 }
 
-h2 {
-    font-size: 48px;
-    color: black;
-    margin-bottom: 20px;
-    text-transform: capitalize;
+.fa-times:hover {
+    display: block;
+    text-align: right;
+    color: #BB0000;
+    cursor: pointer;
 }
 
 .amount-input {
     width: 195px;
     height: 25px;
-}
-
-.action-button {
-    width: 85px;
-    height: 29px;
-    border: none;
-    color: white;
-    outline: none;
-    margin-left: 5px;
-}
-
-.deposit-button {
-    background: #0000FF;
-}
-
-.deposit-button:hover {
-    background: #00004B;
-    cursor: pointer;
-}
-
-.withdraw-button {
-    background: #FF0000;
-}
-
-.withdraw-button:hover {
-    background: #4B0000;
-    cursor: pointer;
+    padding-left: 15px;
+    border: 2px solid black;
 }
 
 .hidden {
