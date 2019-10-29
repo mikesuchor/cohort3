@@ -46,8 +46,8 @@ class AccountController {
     }
 
     highestValueAccount() {
-        return this.accounts.reduce((highest, account) => {
-            return(highest.accountBalance > account.accountBalance) ? highest : account;
+        return this.accounts.reduce((acc, account) => {
+            return(acc.accountBalance > account.accountBalance) ? acc : account;
         });
     }
 

@@ -49,12 +49,16 @@ describe('community class methods', () => {
         community.createCity('Edmonton', 53.5461, 113.4938, 981280);
         community.createCity('Buenos Aires', -34.35, 58.22, 2890000);
         community.createCity('Hammerfest', 70.38, 23.38, 10287);
-        expect(community.getMostNorthern()).toBe(1);
+        expect(community.getMostNorthern()).toEqual({'latitude': 70.38, 'longitude': 23.38, 'name': 'Hammerfest', 'population': 10287});
     });
 
     test('getMostSouthern method', () => {
         const community = new Community;
-        expect(community.getMostSouthern()).toBe(1);
+        community.createCity('Calgary', 51.0447, 114.0719, 1336000);
+        community.createCity('Edmonton', 53.5461, 113.4938, 981280);
+        community.createCity('Buenos Aires', -34.35, 58.22, 2890000);
+        community.createCity('Hammerfest', 70.38, 23.38, 10287);
+        expect(community.getMostSouthern()).toStrictEqual({'latitude': -34.35, 'longitude': 58.22, 'name': 'Buenos Aires', 'population': 2890000});
     });
 
     test('getPopulation method', () => {
@@ -73,6 +77,16 @@ describe('community class methods', () => {
 
     test('deleteCity method', () => {
         const community = new Community;
-        expect(community.deleteCity(name)).toBe(1);
+        community.createCity('Calgary', 51.0447, 114.0719, 1336000);
+        community.createCity('Edmonton', 53.5461, 113.4938, 981280);
+        community.createCity('Buenos Aires', -34.35, 58.22, 2890000);
+        expect(community.communityList)
+            .toEqual([{'latitude': 51.0447, 'longitude': 114.0719, 'name': 'Calgary', 'population': 1336000},
+                      {'latitude': 53.5461, 'longitude': 113.4938, 'name': 'Edmonton', 'population': 981280},
+                      {'latitude': -34.35, 'longitude': 58.22, 'name': 'Buenos Aires', 'population': 2890000}]);
+        community.deleteCity('Edmonton');
+        expect(community.communityList)
+            .toEqual([{'latitude': 51.0447, 'longitude': 114.0719, 'name': 'Calgary', 'population': 1336000},
+                      {'latitude': -34.35, 'longitude': 58.22, 'name': 'Buenos Aires', 'population': 2890000}]);
     });
 });

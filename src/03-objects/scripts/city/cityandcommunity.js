@@ -30,7 +30,7 @@ class City {
 
 class Community {
     constructor() {
-        this.communityList = [];
+        this.communityList = fetch(url)[{}, {}];
     }
 
     whichSphere(city) {
@@ -40,13 +40,15 @@ class Community {
     }
 
     getMostNorthern() {
-        // return this.communityList.reduce((northern, city) => {
-        //     return (northern === undefined || city.latitude > northern.latitude) ? city.latitude : northern.latitude;
-        // }, 0);
+        return this.communityList.reduce((northern, city) => {
+            return (city.latitude > northern.latitude) ? city : northern;
+        });
     }
 
     getMostSouthern() {
-        return 1;
+        return this.communityList.reduce((southern, city) => {
+            return (city.latitude < southern.latitude) ? city : southern;
+        });
     }
 
     getPopulation() {
@@ -60,7 +62,9 @@ class Community {
     }
 
     deleteCity(name) {
-        return 1;
+        this.communityList = this.communityList.filter((city) => {
+            return (name !== city.name);
+        })
     }
 }
 
