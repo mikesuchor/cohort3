@@ -35,11 +35,20 @@ describe('city class methods', () => {
 describe('community class methods', () => {
     test('whichSphere method', () => {
         const community = new Community;
-        expect(community.whichSphere(cityName)).toBe(1);
+        const city = new City('Calgary', 51.0447, 114.0719, 1336000);
+        expect(community.whichSphere(city)).toBe('Northern Hemisphere');
+        const city1 = new City('Buenos Aires', -34.35, 58.22, 2890000);
+        expect(community.whichSphere(city1)).toBe('Southern Hemisphere');
+        const city2 = new City('Middleville', 0, 0, 5000);
+        expect(community.whichSphere(city2)).toBe('Equator');
     });
 
     test('getMostNorthern method', () => {
         const community = new Community;
+        community.createCity('Calgary', 51.0447, 114.0719, 1336000);
+        community.createCity('Edmonton', 53.5461, 113.4938, 981280);
+        community.createCity('Buenos Aires', -34.35, 58.22, 2890000);
+        community.createCity('Hammerfest', 70.38, 23.38, 10287);
         expect(community.getMostNorthern()).toBe(1);
     });
 

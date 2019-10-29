@@ -33,12 +33,16 @@ class Community {
         this.communityList = [];
     }
 
-    whichSphere(cityName) {
-        return 1;
+    whichSphere(city) {
+        if(city.latitude > 0) return "Northern Hemisphere";
+        if(city.latitude < 0) return "Southern Hemisphere";
+        return "Equator";
     }
 
     getMostNorthern() {
-        return 1;
+        // return this.communityList.reduce((northern, city) => {
+        //     return (northern === undefined || city.latitude > northern.latitude) ? city.latitude : northern.latitude;
+        // }, 0);
     }
 
     getMostSouthern() {
