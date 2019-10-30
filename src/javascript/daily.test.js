@@ -19,6 +19,16 @@ const data = {
     prov: "Alberta"
 };
 
+// More Array Exercises of October 29, 2019
+
+test('staff total balances', () => {
+    expect(functions.totalBalances(data.staff)).toBe(3823);
+});
+
+test('staff average balances', () => {
+    expect(functions.averageBalances(data.staff)).toBe(546.14);
+});
+
 // Loop Staff each/map of October 25, 2019
 
 test('email builder for company using forEach', () => {

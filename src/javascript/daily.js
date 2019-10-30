@@ -1,5 +1,20 @@
 const functions = {
 
+    // More Array Exercises of October 29, 2019
+
+    totalBalances: (staffArr) => {
+        return staffArr.reduce((total, person) => {
+            return total + person.balance;
+        }, 0);
+    },
+
+    averageBalances: (staffArr) => {
+        const total = staffArr.reduce((total, person) => {
+            return total + person.balance;
+        }, 0);
+        return Math.round((total / staffArr.length) * 100) / 100;
+    },
+
     // Loop Staff each/map of October 25, 2019
 
     loopStaffForEach: (staffArr) => {
