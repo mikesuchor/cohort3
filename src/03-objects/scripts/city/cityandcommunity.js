@@ -30,7 +30,7 @@ class City {
 
 class Community {
     constructor() {
-        this.communityList = fetch(url)[{}, {}];
+        this.communityList = [];
     }
 
     whichSphere(city) {
