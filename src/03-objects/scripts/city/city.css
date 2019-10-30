@@ -1,0 +1,152 @@
+* {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+body {
+    background-color: #bbb;
+    background: url('../../images/background.jpg');
+    background-size: cover;
+}
+
+h1 {
+    text-transform: capitalize;
+}
+
+h2 {
+    font-size: 28px;
+    color: black;
+    text-transform: capitalize;
+}
+
+#city-creator, #city-functions {
+    text-align: center;
+}
+
+#city-creator h1 {
+    color: white;
+    text-shadow: 2px 2px black;
+}
+
+.city-name-input, .city-latitude-input, .city-longitude-input, .city-population-input {
+    height: 25px;
+    margin-bottom: 5px;
+    width: 180px;
+    border: 2px solid black;
+    padding-left: 15px;
+}
+
+#city-functions button {
+    width: 225px;
+    margin-bottom: 5px;
+}
+
+#city-functions-output {
+    color: white;
+    text-shadow: 1px 1px black;
+}
+
+.action-button {
+    background-color: #222;
+    width: 90px;
+    height: 29px;
+    border: none;
+    color: white;
+    outline: none;
+    margin-left: 5px;
+}
+
+.action-button:hover {
+    background-color: #000;
+    cursor: pointer;
+    color: rgb(184, 139, 28);
+}
+
+#cities {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.city {
+    text-align: center;
+    width: 20%;
+    border: 3px solid black;
+    border-radius: 10px;
+    padding: 20px;
+    background-color: white;
+    margin: 5px;
+    /* background: url('../../images/city.jpg');
+    background-size: cover; */
+}
+
+/* .largetown {
+    background: url('../../images/largetown.jpg');
+    background-size: cover;
+}
+
+.town {
+    background: url('../../images/town.jpg');
+    background-size: cover;
+}
+
+.village {
+    background: url('../../images/village.jpg');
+    background-size: cover;
+}
+
+.hamlet {
+    background: url('../../images/hamlet.jpg');
+    background-size: cover;
+} */
+
+.city-latitude, .city-longitude {
+    display: inline-block;
+}
+
+i {
+    margin: 0 5px;
+}
+
+.fa-coins, .fa-long-arrow-alt-up, .fa-long-arrow-alt-down, .fa-globe-americas, .fa-sign-in-alt,
+.fa-sign-out-alt, .fa-arrows-alt-v, .fa-arrows-alt-h, .fa-male {
+    color: rgb(184, 139, 28);
+}
+
+.fa-male {
+    font-size: 28px;
+    display: inline-block;
+}
+
+.fa-times {
+    display: block;
+    text-align: right;
+    color: #FF0000;
+}
+
+.fa-times:hover {
+    display: block;
+    text-align: right;
+    color: #BB0000;
+    cursor: pointer;
+}
+
+.amount-input {
+    display: block;
+    margin: auto;
+    margin-bottom: 5px;
+    width: 195px;
+    height: 25px;
+    padding-left: 15px;
+    border: 2px solid black;
+}
+
+.population-output {
+    display: inline-block;
+    margin-bottom: 5px;
+}
+
+.hidden {
+    display: none;
+}

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>City and Community</title>
+    <script src="https://kit.fontawesome.com/c3d9647908.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="./city.css">
+</head>
+<body>
+    <section id="city-creator">
+        <h1>CREATE A CITY</h1>
+        <input id="city-name-input" type="text" placeholder="Name">
+        <input id="city-latitude-input" type="number" placeholder="Latitude">
+        <input id="city-longitude-input" type="number" placeholder="Longitude">
+        <input id="city-population-input" type="number" placeholder="Population">
+        <button class="add-city-button action-button">Add City</button>
+    </section>
+    <section id="city-functions" class="hidden">
+        <div>
+            <button class="total-button action-button"><i class="fas fa-coins"></i>Show Total Population</button>
+            <button class="north-button action-button"><i class="fas fa-long-arrow-alt-up"></i>Show Most Northern City</button>
+            <button class="south-button action-button"><i class="fas fa-long-arrow-alt-down"></i>Show Most Southern City</button>
+        </div>
+        <h3 id="city-functions-output"></h3>
+    </section>
+    <section id="cities"></section>
+
+    <script type="module" src="./index.js"></script>
+    <script type="module" src="./cityandcommunity.js"></script>
+</body>
+</html>

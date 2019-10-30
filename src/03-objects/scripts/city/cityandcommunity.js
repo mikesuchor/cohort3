@@ -1,5 +1,25 @@
+async function postData(url = '', data = {}) {
+    const response = await fetch(url, {
+        method: 'POST',
+        mode: 'cors',
+        cache: 'no-cache',
+        credentials: 'same-origin',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        redirect: 'follow',
+        referrer: 'no-referrer',
+        body: JSON.stringify(data)
+    });
+    const json = await response.json();
+    json.status = response.status;
+    json.statusText = response.statusText;
+    return json;
+}
+
 class City {
-    constructor(name, latitude, longitude, population) {
+    constructor(key, name, latitude, longitude, population) {
+        this.key = key;
         this.name = name;
         this.latitude = latitude;
         this.longitude = longitude;
@@ -7,15 +27,17 @@ class City {
     }
 
     show() {
-        return `Name: ${this.name}, Latitude: ${this.latitude}, Longitude: ${this.longitude}, Population: ${this.population}`;
+        return `Key: ${this.key}, Name: ${this.name}, Latitude: ${this.latitude}, Longitude: ${this.longitude}, Population: ${this.population}`;
     }
 
     movedIn(num) {
-        return this.population + num;
+        if(num < 0) return this.population;
+        return this.population += num;
     }
 
     movedOut(num) {
-        return this.population - num;
+        if(num < 0) return this.population;
+        return this.population -= num;
     }
 
     howBig() {
@@ -57,15 +79,18 @@ class Community {
         }, 0);
     }
 
-    createCity(name, latitude, longitude, population) {
-        this.communityList.push({name, latitude, longitude, population});
+    createCity(key, name, latitude, longitude, population) {
+        const city = new City(key, name, latitude, longitude, population);
+        this.communityList.push(city);
+        postData('http://localhost:5000/add', city);
     }
 
-    deleteCity(name) {
+    deleteCity(key, name) {
         this.communityList = this.communityList.filter((city) => {
             return (name !== city.name);
         })
+        postData('http://localhost:5000/delete', {key});
     }
 }
 
-export { City, Community };
+export { postData, City, Community };
