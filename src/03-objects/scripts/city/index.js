@@ -11,6 +11,10 @@ const cityLongitudeInput = document.getElementById("city-longitude-input");
 const cityPopulationInput = document.getElementById("city-population-input");
 let key = 0;
 
+document.addEventListener('DOMContentLoaded', () => {
+    communityController.getCities();
+});
+
 document.addEventListener("click", () => {
     if(event.target.className === "add-city-button action-button") {
         // Refactor this

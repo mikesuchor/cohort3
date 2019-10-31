@@ -89,4 +89,16 @@ describe('community class methods', () => {
             .toEqual([{'key': 1, 'latitude': 51.0447, 'longitude': 114.0719, 'name': 'Calgary', 'population': 1336000},
                       {'key': 3, 'latitude': -34.35, 'longitude': 58.22, 'name': 'Buenos Aires', 'population': 2890000}]);
     });
+
+    // test('getCities method', () => {
+        
+    // });
+
+    // test('clearCities method', () => {
+    //     const community = new Community;
+    //     community.createCity(1, 'Calgary', 51.0447, 114.0719, 1336000);
+    //     community.createCity(2, 'Edmonton', 53.5461, 113.4938, 981280);
+    //     community.createCity(3, 'Buenos Aires', -34.35, 58.22, 2890000);
+    //     community.clearCities().then(data => expect(data).toEqual([]));
+    // });
 });

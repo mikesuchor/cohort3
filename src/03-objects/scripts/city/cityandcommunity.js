@@ -97,6 +97,14 @@ class Community {
         postData('http://localhost:5000/delete', {key});
     }
 
+    getCities() {
+        fetch('http://localhost:5000/all')
+            .then(request => request.json())
+            .then((data) => {
+                this.communityList.push(data);
+            });
+    }
+
     clearCities() {
         this.communityList = [];
         fetch('http://localhost:5000/clear');
