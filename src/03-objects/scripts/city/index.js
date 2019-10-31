@@ -13,6 +13,10 @@ let key = 0;
 
 document.addEventListener('DOMContentLoaded', () => {
     communityController.getCities();
+     (communityController.communityList.forEach((city) => {
+        console.log('hello');
+        helpers.createCard(city.name, city.latitude, city.longitude, city.population, cities);
+    }), 5000);
 });
 
 document.addEventListener("click", () => {
