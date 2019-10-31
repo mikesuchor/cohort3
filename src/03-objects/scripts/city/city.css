@@ -63,6 +63,16 @@ h2 {
     color: rgb(184, 139, 28);
 }
 
+.clear-cities-button {
+    background: rgb(139, 0, 0);
+    color: white;
+}
+
+.clear-cities-button:hover {
+    background: rgb(255, 0, 0);
+    color: white;
+}
+
 #cities {
     display: flex;
     flex-wrap: wrap;

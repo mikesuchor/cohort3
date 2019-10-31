@@ -30,14 +30,18 @@ class City {
         return `Key: ${this.key}, Name: ${this.name}, Latitude: ${this.latitude}, Longitude: ${this.longitude}, Population: ${this.population}`;
     }
 
-    movedIn(num) {
+    movedIn(city, num) {
         if(num < 0) return this.population;
-        return this.population += num;
+        city.population += num;
+        postData('http://localhost:5000/update', city);
+        return city.population;
     }
 
-    movedOut(num) {
+    movedOut(city, num) {
         if(num < 0) return this.population;
-        return this.population -= num;
+        city.population -= num;
+        postData('http://localhost:5000/update', city);
+        return city.population;
     }
 
     howBig() {
@@ -85,11 +89,17 @@ class Community {
         postData('http://localhost:5000/add', city);
     }
 
-    deleteCity(key, name) {
+    deleteCity(key) {
+        key = Number(key);
         this.communityList = this.communityList.filter((city) => {
-            return (name !== city.name);
+            return (key !== city.key);
         })
         postData('http://localhost:5000/delete', {key});
+    }
+
+    clearCities() {
+        this.communityList = [];
+        fetch('http://localhost:5000/clear');
     }
 }
 
