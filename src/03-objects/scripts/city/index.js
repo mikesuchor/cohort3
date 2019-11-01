@@ -14,16 +14,13 @@ let key = 0;
 document.addEventListener('DOMContentLoaded', () => {
     fetch('http://localhost:5000/all')
         .then(request => request.json())
-        .then(data => communityController.communityList.push(data))
-        .then(() => {
-            
-            communityController.communityList.forEach((city) => {
-                console.log('hello');
-                console.log(city);
-                console.log(city.name, city.latitude, city.longitude, city.population, cities);
+        .then(data => {
+            data.map((city) => {
+                communityController.createCity(Number(city.key), city.name, Number(city.latitude), Number(city.longitude), Number(city.population));
                 helpers.createCard(city.name, city.latitude, city.longitude, city.population, cities);
             });
-        });
+            communityController.communityList.length > 1 ? cityFunctions.classList.remove("hidden") : cityFunctions.classList.add("hidden");
+        })
 });
 
 document.addEventListener("click", () => {
@@ -35,13 +32,14 @@ document.addEventListener("click", () => {
                 duplicate = true;
             }
         }
-        if(!duplicate) {
+        if(!duplicate && cityNameInput.value) {
             key++;
             communityController.createCity(Number(key), cityNameInput.value, Number(cityLatitudeInput.value), Number(cityLongitudeInput.value), Number(cityPopulationInput.value));
             helpers.createCard(cityNameInput.value, cityLatitudeInput.value, cityLongitudeInput.value, cityPopulationInput.value, cities);
         }
         helpers.clearInputs(cityNameInput, cityLatitudeInput, cityLongitudeInput, cityPopulationInput);
         communityController.communityList.length > 1 ? cityFunctions.classList.remove("hidden") : cityFunctions.classList.add("hidden");
+        console.log(communityController.communityList);
     }
 
     if(event.target.className === "clear-cities-button action-button") { 
