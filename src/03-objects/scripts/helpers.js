@@ -7,6 +7,7 @@ const helpers = {
     },
 
     createCard(name, accountBalance, target) {
+        console.log('creating');
         if(!name) {
             return;
         }

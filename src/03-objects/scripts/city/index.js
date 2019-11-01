@@ -12,11 +12,18 @@ const cityPopulationInput = document.getElementById("city-population-input");
 let key = 0;
 
 document.addEventListener('DOMContentLoaded', () => {
-    communityController.getCities();
-     (communityController.communityList.forEach((city) => {
-        console.log('hello');
-        helpers.createCard(city.name, city.latitude, city.longitude, city.population, cities);
-    }), 5000);
+    fetch('http://localhost:5000/all')
+        .then(request => request.json())
+        .then(data => communityController.communityList.push(data))
+        .then(() => {
+            
+            communityController.communityList.forEach((city) => {
+                console.log('hello');
+                console.log(city);
+                console.log(city.name, city.latitude, city.longitude, city.population, cities);
+                helpers.createCard(city.name, city.latitude, city.longitude, city.population, cities);
+            });
+        });
 });
 
 document.addEventListener("click", () => {
