@@ -1,4 +1,4 @@
-import { Community } from './cityandcommunity.js';
+import { Community } from './city.js';
 import helpers from './helpers.js';
 
 const communityController = new Community();
@@ -12,15 +12,9 @@ const cityPopulationInput = document.getElementById("city-population-input");
 let key = 0;
 
 document.addEventListener('DOMContentLoaded', () => {
-    fetch('http://localhost:5000/all')
-        .then(request => request.json())
-        .then(data => {
-            data.map((city) => {
-                communityController.createCity(Number(city.key), city.name, Number(city.latitude), Number(city.longitude), Number(city.population));
-                helpers.createCard(city.name, city.latitude, city.longitude, city.population, cities);
-            });
-            communityController.communityList.length > 1 ? cityFunctions.classList.remove("hidden") : cityFunctions.classList.add("hidden");
-        })
+    communityController.getAllCities();
+    communityController.communityList.length > 1 ? cityFunctions.classList.remove("hidden") : cityFunctions.classList.add("hidden");
+    key = communityController.getLastKey()
 });
 
 document.addEventListener("click", () => {
@@ -33,6 +27,7 @@ document.addEventListener("click", () => {
             }
         }
         if(!duplicate && cityNameInput.value) {
+            console.log(key);
             key++;
             communityController.createCity(Number(key), cityNameInput.value, Number(cityLatitudeInput.value), Number(cityLongitudeInput.value), Number(cityPopulationInput.value));
             helpers.createCard(cityNameInput.value, cityLatitudeInput.value, cityLongitudeInput.value, cityPopulationInput.value, cities);
@@ -43,7 +38,7 @@ document.addEventListener("click", () => {
     }
 
     if(event.target.className === "clear-cities-button action-button") { 
-        communityController.clearCities();
+        communityController.deleteAllCities();
         while (cities.firstChild) {
             cities.firstChild.remove();
         }

@@ -1,4 +1,4 @@
-import { City, Community } from './cityandcommunity.js';
+import { City, Community } from './city.js';
 
 describe('city class methods', () => {
     test('show method', () => {

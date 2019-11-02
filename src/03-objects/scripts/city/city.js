@@ -1,3 +1,5 @@
+import helpers from './helpers.js';
+
 async function postData(url = '', data = {}) {
     const response = await fetch(url, {
         method: 'POST',
@@ -59,6 +61,17 @@ class Community {
         this.communityList = [];
     }
 
+    getLastKey() {
+        fetch('http://localhost:5000/all')
+            .then(request => request.json())
+            .then((data) => {
+                const test = data.reduce((acc, city) => {
+                    return acc > city.key ? acc : city.key;
+                }, 1)
+                console.log(test);
+            })
+    }
+
     whichSphere(city) {
         if(city.latitude > 0) return "Northern Hemisphere";
         if(city.latitude < 0) return "Southern Hemisphere";
@@ -97,9 +110,20 @@ class Community {
         postData('http://localhost:5000/delete', {key});
     }
 
-    clearCities() {
+    deleteAllCities() {
         this.communityList = [];
         fetch('http://localhost:5000/clear');
+    }
+
+    getAllCities() {
+        fetch('http://localhost:5000/all')
+        .then(request => request.json())
+        .then(data => {
+            data.map((city) => {
+                this.createCity(Number(city.key), city.name, Number(city.latitude), Number(city.longitude), Number(city.population));
+                helpers.createCard(city.name, city.latitude, city.longitude, city.population, cities);
+            });
+        })
     }
 }
 
