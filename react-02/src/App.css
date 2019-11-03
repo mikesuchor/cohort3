@@ -21,16 +21,16 @@
   color: #09d3ac;
 }
 
-.icons:nth-child(2), .icons:nth-child(4) {
+.icons:nth-child(even) {
   animation: icons-spin-clockwise infinite 5s linear;
 }
 
-.icons:nth-child(3), .icons:nth-child(5), .icons:nth-child(7) {
+.icons:nth-child(odd) {
   animation: icons-spin-counter infinite 5s linear;
 }
 
-.icons:nth-child(6) {
-  animation: icons-spin-crazy infinite 0.5s linear;
+.icons:nth-child(8) {
+  animation: icons-spin-crazy infinite 1s linear;
 }
 
 @keyframes icons-spin-clockwise {
