@@ -1,4 +1,5 @@
 import { City, Community } from './city.js';
+import helpers from './helpers.js';
 
 describe('city class methods', () => {
     test('show method', () => {
@@ -8,12 +9,14 @@ describe('city class methods', () => {
     
     test('movedIn method', () => {
         const city = new City(1, 'Calgary', 51.0447, 114.0719, 1336000);
-        expect(city.movedIn(10000)).toBe(1346000);
+        expect(city.movedIn(city, -10)).toBe(1336000);
+        expect(city.movedIn(city, 10000)).toBe(1346000);
     });
 
     test('movedOut method', () => {
         const city = new City(1, 'Calgary', 51.0447, 114.0719, 1336000);
-        expect(city.movedOut(10000)).toBe(1326000);
+        expect(city.movedOut(city, -10)).toBe(1336000);
+        expect(city.movedOut(city, 10000)).toBe(1326000);
     });
 
     test('howBig method', () => {
@@ -33,6 +36,10 @@ describe('city class methods', () => {
 });
 
 describe('community class methods', () => {
+    test('getLastKey method', () => {
+
+    });
+
     test('whichSphere method', () => {
         const community = new Community;
         const city = new City(1, 'Calgary', 51.0447, 114.0719, 1336000);
@@ -90,15 +97,47 @@ describe('community class methods', () => {
                       {'key': 3, 'latitude': -34.35, 'longitude': 58.22, 'name': 'Buenos Aires', 'population': 2890000}]);
     });
 
-    // test('getCities method', () => {
-        
-    // });
+    test('deleteAllCities method', () => {
+        const community = new Community;
+        community.createCity(1, 'Calgary', 51.0447, 114.0719, 1336000);
+        community.createCity(2, 'Edmonton', 53.5461, 113.4938, 981280);
+        community.createCity(3, 'Buenos Aires', -34.35, 58.22, 2890000);
+        community.deleteAllCities();
+        expect(community.communityList).toEqual([]);
+    });
 
-    // test('clearCities method', () => {
-    //     const community = new Community;
-    //     community.createCity(1, 'Calgary', 51.0447, 114.0719, 1336000);
-    //     community.createCity(2, 'Edmonton', 53.5461, 113.4938, 981280);
-    //     community.createCity(3, 'Buenos Aires', -34.35, 58.22, 2890000);
-    //     community.clearCities().then(data => expect(data).toEqual([]));
+    test('getAllCities method', () => {
+        
+    });
+});
+
+describe('helper functions', () => {
+    test('clear inputs method', () => {
+        const input1 = document.createElement("input");
+        input1.value = "clear me";
+        const input2 = input1;
+        const input3 = input1;
+        const input4 = input1;
+        helpers.clearInputs(input1, input2, input3, input4);
+        expect(input1.value).toBe("");
+        expect(input2.value).toBe("");
+        expect(input3.value).toBe("");
+        expect(input4.value).toBe("");
+    });
+
+    test('create card', () => {
+        const testDiv = document.createElement("div");
+        helpers.createCard("", 51.0447, 114.0719, 1336000, testDiv);
+        expect(testDiv.children[0]).toBe(undefined);
+        helpers.createCard("Calgary", 51.0447, 114.0719, 1336000, testDiv);
+        expect(testDiv.children[0].id).toBe("Calgary");
+    });
+
+    // test('remove card method', () => {
+    //     const testDiv = document.createElement("div");
+    //     helpers.createCard("Calgary", 51.0447, 114.0719, 1336000, testDiv);
+    //     expect(testDiv.children[0].id).toBe("Calgary");
+    //     helpers.removeCard("Calgary");
+    //     expect(testDiv.children[0]).toBe(undefined);
     // });
 });
