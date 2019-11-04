@@ -71,3 +71,19 @@ test('return an array of all first names', () => {
     expect(functions.getAllFirstNames(data))
         .toEqual(['Phoebe', 'Isabel', 'Eusebiu', 'Iustina', '龚', 'László', '何', 'Makra', 'Tudorița', 'Magdaléna']);
 });
+
+test('show delay problem method', () => {
+
+});
+
+test('show delay solution method', () => {
+    
+});
+
+test('get users method', () => {
+    
+});
+
+test('work with data method', () => {
+
+});
