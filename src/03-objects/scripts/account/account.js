@@ -29,14 +29,12 @@ class AccountController {
     addAccount(name, accountBalance) {
         if(!name) return;
         this.accounts.push(new Account(name, accountBalance));
-        return this.accounts;
     }
 
     removeAccount(name) {
         this.accounts = this.accounts.filter((account) => {
             return account.accountName != name;
         });
-        return this.accounts;
     }
 
     totalAllAccounts() {

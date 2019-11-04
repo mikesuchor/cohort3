@@ -40,25 +40,27 @@ describe('test Account class', () => {
 describe('test AccountController', () => {
     test('test adding an account', () => {
         const accountController = new AccountController();
-        expect(accountController.addAccount("", 50)).toEqual(undefined);
-        expect(accountController.addAccount("savings account", 50))
-            .toEqual([{"accountName": "savings account", "accountBalance": 50}]);
-        expect(accountController.addAccount("joint account", 5000))
-            .toEqual(
-                [
-                    {"accountName": "savings account", "accountBalance": 50},
-                    {"accountName": "joint account", "accountBalance": 5000}
-                ]
-            );
+        accountController.addAccount("", 50);
+        expect(accountController.accounts).toEqual([]);
+        accountController.addAccount("savings account", 50);
+        expect(accountController.accounts).toEqual([{"accountName": "savings account", "accountBalance": 50}]);
+        accountController.addAccount("joint account", 5000);
+        expect(accountController.accounts).toEqual(
+            [
+                {"accountName": "savings account", "accountBalance": 50},
+                {"accountName": "joint account", "accountBalance": 5000}
+            ]
+        );
     });
 
     test('test removing an account', () => {
         const accountController = new AccountController();
         accountController.addAccount("savings account", 50);
         accountController.addAccount("joint account", 5000);
-        expect(accountController.removeAccount("savings account"))
-            .toEqual([{"accountName": "joint account", "accountBalance": 5000}]);
-        expect(accountController.removeAccount("joint account")).toEqual([]);
+        accountController.removeAccount("savings account");
+        expect(accountController.accounts).toEqual([{"accountName": "joint account", "accountBalance": 5000}]);
+        accountController.removeAccount("joint account");
+        expect(accountController.accounts).toEqual([]);
     });
 
     test('total the amount in all accounts', () => {
@@ -110,12 +112,11 @@ describe('test helpers', () => {
         expect(testDiv.children[0].id).toBe("test");
     });
 
-    // Fix this test
-    // test('remove card', () => {
-    //     const testDiv = document.createElement("div");
-    //     helpers.createCard("test", 200, testDiv);
-    //     expect(testDiv.children[0].id).toBe("test");
-    //     helpers.removeCard("test");
-    //     expect(testDiv.children[0]).toBe(undefined);
-    // });
+    test('remove card', () => {
+        const testDiv = document.createElement("div");
+        helpers.createCard("test", 200, testDiv);
+        expect(testDiv.children[0].id).toBe("test");
+        helpers.removeCard(testDiv.children[0]);
+        expect(testDiv.children[0]).toBe(undefined);
+    });
 });

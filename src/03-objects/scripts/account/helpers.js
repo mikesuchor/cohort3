@@ -7,7 +7,6 @@ const helpers = {
     },
 
     createCard(name, accountBalance, target) {
-        console.log('creating');
         if(!name) {
             return;
         }
@@ -57,8 +56,8 @@ const helpers = {
         return accountCardTemplate;
     },
 
-    removeCard(name) {
-        name.remove();
+    removeCard(node) {
+        node.remove();
     }
 }
 

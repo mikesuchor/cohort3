@@ -22,14 +22,12 @@ document.addEventListener("click", () => {
             helpers.createCard(newAccountName.value, newAccountAmount.value, accounts);
         }
         helpers.clearInputs(newAccountName, newAccountAmount);
-        console.log(accountController.accounts)
         accountController.accounts.length > 1 ? accountFunctions.classList.remove("hidden") : accountFunctions.classList.add("hidden");
     }
 
     if(event.target.className === "fas fa-times") {
         accountController.removeAccount(event.target.parentNode.id);
         helpers.removeCard(event.target.parentNode);
-        console.log(accountController.accounts)
         accountController.accounts.length > 1 ? accountFunctions.classList.remove("hidden") : accountFunctions.classList.add("hidden");
     }
 

@@ -6,8 +6,9 @@
 
 body {
     background-color: #bbb;
-    background: url('./images/goldbars.jpg');
+    background: url('../../images/goldbars.jpg');
     background-size: cover;
+    background-repeat: no-repeat;
 }
 
 h1 {
@@ -100,7 +101,7 @@ h2 {
     display: block;
     margin: auto;
     margin-bottom: 5px;
-    width: 195px;
+    width: 65%;
     height: 25px;
     padding-left: 15px;
     border: 2px solid black;
