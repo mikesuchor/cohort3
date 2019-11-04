@@ -133,11 +133,11 @@ describe('helper functions', () => {
         expect(testDiv.children[0].id).toBe("Calgary");
     });
 
-    // test('remove card method', () => {
-    //     const testDiv = document.createElement("div");
-    //     helpers.createCard("Calgary", 51.0447, 114.0719, 1336000, testDiv);
-    //     expect(testDiv.children[0].id).toBe("Calgary");
-    //     helpers.removeCard("Calgary");
-    //     expect(testDiv.children[0]).toBe(undefined);
-    // });
+    test('remove card method', () => {
+        const testDiv = document.createElement("div");
+        helpers.createCard("Calgary", 51.0447, 114.0719, 1336000, testDiv);
+        expect(testDiv.children[0].id).toBe("Calgary");
+        helpers.removeCard(testDiv.children[0]);
+        expect(testDiv.children[0]).toBe(undefined);
+    });
 });

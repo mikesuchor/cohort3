@@ -87,29 +87,7 @@ h2 {
     padding: 20px;
     background-color: white;
     margin: 5px;
-    /* background: url('../../images/city.jpg');
-    background-size: cover; */
 }
-
-/* .largetown {
-    background: url('../../images/largetown.jpg');
-    background-size: cover;
-}
-
-.town {
-    background: url('../../images/town.jpg');
-    background-size: cover;
-}
-
-.village {
-    background: url('../../images/village.jpg');
-    background-size: cover;
-}
-
-.hamlet {
-    background: url('../../images/hamlet.jpg');
-    background-size: cover;
-} */
 
 .city-latitude, .city-longitude {
     display: inline-block;
@@ -147,7 +125,7 @@ i {
     display: block;
     margin: auto;
     margin-bottom: 5px;
-    width: 195px;
+    width: 65%;
     height: 25px;
     padding-left: 15px;
     border: 2px solid black;

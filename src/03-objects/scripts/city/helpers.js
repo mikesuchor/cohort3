@@ -80,8 +80,8 @@ const helpers = {
         return cityCardTemplate;
     },
 
-    removeCard(name) {
-        name.remove();
+    removeCard(node) {
+        node.remove();
     }
 }
 
