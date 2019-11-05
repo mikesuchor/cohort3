@@ -5,8 +5,6 @@ class OddComponent extends React.Component {
         return (
             <div>
                 <h1>Hello World from OddComponent</h1>
-                <h2>{this.props.whatToSay}</h2>
-                <button onClick={this.props.onPushMe}>Push Me</button>
             </div>
         )
     }
