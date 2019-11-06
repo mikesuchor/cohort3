@@ -97,12 +97,12 @@ describe('community class methods', () => {
                       {'key': 3, 'latitude': -34.35, 'longitude': 58.22, 'name': 'Buenos Aires', 'population': 2890000}]);
     });
 
-    test('deleteAllCities method', () => {
+    test('clearAllCities method', () => {
         const community = new Community;
         community.createCity(1, 'Calgary', 51.0447, 114.0719, 1336000);
         community.createCity(2, 'Edmonton', 53.5461, 113.4938, 981280);
         community.createCity(3, 'Buenos Aires', -34.35, 58.22, 2890000);
-        community.deleteAllCities();
+        community.clearAllCities();
         expect(community.communityList).toEqual([]);
     });
 
@@ -127,17 +127,21 @@ describe('helper functions', () => {
 
     test('create card', () => {
         const testDiv = document.createElement("div");
-        helpers.createCard("", 51.0447, 114.0719, 1336000, testDiv);
+        helpers.createCard(1, "", 51.0447, 114.0719, 1336000, testDiv);
         expect(testDiv.children[0]).toBe(undefined);
-        helpers.createCard("Calgary", 51.0447, 114.0719, 1336000, testDiv);
+        helpers.createCard(1, "Calgary", 51.0447, 114.0719, 1336000, testDiv);
         expect(testDiv.children[0].id).toBe("Calgary");
     });
 
     test('remove card method', () => {
         const testDiv = document.createElement("div");
-        helpers.createCard("Calgary", 51.0447, 114.0719, 1336000, testDiv);
+        helpers.createCard(1, "Calgary", 51.0447, 114.0719, 1336000, testDiv);
         expect(testDiv.children[0].id).toBe("Calgary");
         helpers.removeCard(testDiv.children[0]);
         expect(testDiv.children[0]).toBe(undefined);
     });
+});
+
+describe('fetch functions', () => {
+    
 });

@@ -1,24 +1,5 @@
 import helpers from './helpers.js';
 
-async function postData(url = '', data = {}) {
-    const response = await fetch(url, {
-        method: 'POST',
-        mode: 'cors',
-        cache: 'no-cache',
-        credentials: 'same-origin',
-        headers: {
-            'Content-Type': 'application/json'
-        },
-        redirect: 'follow',
-        referrer: 'no-referrer',
-        body: JSON.stringify(data)
-    });
-    const json = await response.json();
-    json.status = response.status;
-    json.statusText = response.statusText;
-    return json;
-}
-
 class City {
     constructor(key, name, latitude, longitude, population) {
         this.key = key;
@@ -35,14 +16,14 @@ class City {
     movedIn(city, num) {
         if(num < 0) return this.population;
         city.population += num;
-        postData('http://localhost:5000/update', city);
+        // helpers.postData('http://localhost:5000/update', city);
         return city.population;
     }
 
     movedOut(city, num) {
         if(num < 0) return this.population;
         city.population -= num;
-        postData('http://localhost:5000/update', city);
+        // helpers.postData('http://localhost:5000/update', city);
         return city.population;
     }
 
@@ -62,14 +43,9 @@ class Community {
     }
 
     getLastKey() {
-        fetch('http://localhost:5000/all')
-            .then(request => request.json())
-            .then((data) => {
-                const test = data.reduce((acc, city) => {
-                    return acc > city.key ? acc : city.key;
-                }, 1)
-                console.log(test);
-            })
+        return this.communityList.reduce((key, city) => {
+            return (key > city.key) ? key : city.key;
+        }, 0);
     }
 
     whichSphere(city) {
@@ -96,10 +72,9 @@ class Community {
         }, 0);
     }
 
-    createCity(key, name, latitude, longitude, population) {
+    createCity({key, name, latitude, longitude, population}) {
         const city = new City(key, name, latitude, longitude, population);
         this.communityList.push(city);
-        postData('http://localhost:5000/add', city);
     }
 
     deleteCity(key) {
@@ -107,24 +82,11 @@ class Community {
         this.communityList = this.communityList.filter((city) => {
             return (key !== city.key);
         })
-        postData('http://localhost:5000/delete', {key});
     }
 
-    deleteAllCities() {
+    clearAllCities() {
         this.communityList = [];
-        fetch('http://localhost:5000/clear');
-    }
-
-    getAllCities() {
-        fetch('http://localhost:5000/all')
-        .then(request => request.json())
-        .then(data => {
-            data.map((city) => {
-                this.createCity(Number(city.key), city.name, Number(city.latitude), Number(city.longitude), Number(city.population));
-                helpers.createCard(city.name, city.latitude, city.longitude, city.population, cities);
-            });
-        })
     }
 }
 
-export { postData, City, Community };
+export { City, Community };

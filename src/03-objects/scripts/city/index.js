@@ -1,4 +1,5 @@
 import { Community } from './city.js';
+import fetchFunctions from './fetchFunctions.js'
 import helpers from './helpers.js';
 
 const communityController = new Community();
@@ -12,9 +13,9 @@ const cityPopulationInput = document.getElementById("city-population-input");
 let key = 0;
 
 document.addEventListener('DOMContentLoaded', () => {
-    communityController.getAllCities();
+    key = communityController.getLastKey();
+    fetchFunctions.getAllCities();
     communityController.communityList.length > 1 ? cityFunctions.classList.remove("hidden") : cityFunctions.classList.add("hidden");
-    key = communityController.getLastKey()
 });
 
 document.addEventListener("click", () => {
@@ -27,10 +28,11 @@ document.addEventListener("click", () => {
             }
         }
         if(!duplicate && cityNameInput.value) {
-            console.log(key);
             key++;
-            communityController.createCity(Number(key), cityNameInput.value, Number(cityLatitudeInput.value), Number(cityLongitudeInput.value), Number(cityPopulationInput.value));
-            helpers.createCard(cityNameInput.value, cityLatitudeInput.value, cityLongitudeInput.value, cityPopulationInput.value, cities);
+            const city = {key: Number(key), name: cityNameInput.value, latitude: Number(cityLatitudeInput.value), longitude: Number(cityLongitudeInput.value), population: Number(cityPopulationInput.value)};
+            communityController.createCity(city);
+            fetchFunctions.postData('http://localhost:5000/add', city);
+            helpers.createCard(key, cityNameInput.value, cityLatitudeInput.value, cityLongitudeInput.value, cityPopulationInput.value, cities);
         }
         helpers.clearInputs(cityNameInput, cityLatitudeInput, cityLongitudeInput, cityPopulationInput);
         communityController.communityList.length > 1 ? cityFunctions.classList.remove("hidden") : cityFunctions.classList.add("hidden");
@@ -38,7 +40,8 @@ document.addEventListener("click", () => {
     }
 
     if(event.target.className === "clear-cities-button action-button") { 
-        communityController.deleteAllCities();
+        communityController.clearAllCities();
+        fetchFunctions.clearAllCities();
         while (cities.firstChild) {
             cities.firstChild.remove();
         }
@@ -47,6 +50,7 @@ document.addEventListener("click", () => {
 
     if(event.target.className === "fas fa-times") {
         communityController.deleteCity(event.target.parentNode.getAttribute("key"));
+        // fetchFunctions.postData('http://localhost:5000/delete', {key});
         helpers.removeCard(event.target.parentNode);
         communityController.communityList.length > 1 ? cityFunctions.classList.remove("hidden") : cityFunctions.classList.add("hidden");
     }

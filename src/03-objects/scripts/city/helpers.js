@@ -1,6 +1,4 @@
 const helpers = {
-    cardCount: 0,
-
     clearInputs: (input1, input2, input3, input4) => {
         input1.value = "";
         input2.value = "";
@@ -8,14 +6,13 @@ const helpers = {
         input4.value = "";
     },
 
-    createCard(name, latitude, longitude, population, target) {
+    createCard(key, name, latitude, longitude, population, target) {
         if(!name) {
             return;
         }
-        this.cardCount++;
         const cityCardTemplate = document.createElement("div");
             cityCardTemplate.id = name;
-            cityCardTemplate.setAttribute("key", helpers.cardCount);
+            cityCardTemplate.setAttribute("key", key);
             cityCardTemplate.classList.add("city");
         const deleteIcon = document.createElement("i");
             deleteIcon.classList.add("fas", "fa-times");
@@ -47,21 +44,21 @@ const helpers = {
             populationIcon.classList.add("fas", "fa-male");
             cityCardTemplate.appendChild(populationIcon);
         const populationOutput = document.createElement("h2");
-            populationOutput.id = `population${this.cardCount}`;
+            populationOutput.id = `population${key}`;
             populationOutput.classList.add("population-output");
             populationOutput.innerText = population;
             cityCardTemplate.appendChild(populationOutput);
         const lineBreak2 = document.createElement("br");
             cityCardTemplate.appendChild(lineBreak2);
         const input = document.createElement("input");
-            input.id = `input${this.cardCount}`;
+            input.id = `input${key}`;
             input.classList.add("population-input");
             input.type = "number";
             input.min = "0";
             input.placeholder = "People to add / remove";
             cityCardTemplate.appendChild(input);
         const movedInButton = document.createElement("button");
-            movedInButton.id = `movedin-button${this.cardCount}`;
+            movedInButton.id = `movedin-button${key}`;
             movedInButton.classList.add("movedin-button", "action-button");
             movedInButton.innerText = " Moved In";
             const movedInIcon = document.createElement("i");
@@ -69,7 +66,7 @@ const helpers = {
                 movedInButton.prepend(movedInIcon);
             cityCardTemplate.appendChild(movedInButton);
         const movedOutButton = document.createElement("button");
-            movedOutButton.id = `movedout-button${this.cardCount}`;
+            movedOutButton.id = `movedout-button${key}`;
             movedOutButton.classList.add("movedout-button", "action-button");
             movedOutButton.innerText = "Moved Out ";
             const movedOutIcon = document.createElement("i");
