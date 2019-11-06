@@ -1,5 +1,13 @@
 const functions = {
 
+    // More Array Exercises (Really) of November 6, 2019
+
+    balance1000: (staffArr) => {
+        return staffArr.filter((person) => {
+            return person.balance >= 1000;
+        });
+    },
+
     // More Array Exercises of October 29, 2019
 
     totalBalances: (staffArr) => {

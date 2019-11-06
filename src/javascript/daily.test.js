@@ -19,6 +19,13 @@ const data = {
     prov: "Alberta"
 };
 
+// More Array Exercises (Really) of November 6, 2019
+
+test('staff with balance >=1000', () => {
+    expect(functions.balance1000(data.staff))
+        .toEqual([{ fname: "Liam", lname: "Henry", balance: 1000 }, { fname: "Emma", lname: "Jones", balance: 1330 }]);
+});
+
 // More Array Exercises of October 29, 2019
 
 test('staff total balances', () => {
