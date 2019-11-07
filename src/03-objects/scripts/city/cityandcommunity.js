@@ -1,5 +1,3 @@
-import helpers from './helpers.js';
-
 class City {
     constructor(key, name, latitude, longitude, population) {
         this.key = key;
@@ -15,16 +13,12 @@ class City {
 
     movedIn(city, num) {
         if(num < 0) return this.population;
-        city.population += num;
-        // helpers.postData('http://localhost:5000/update', city);
-        return city.population;
+        return city.population += num;
     }
 
     movedOut(city, num) {
         if(num < 0) return this.population;
-        city.population -= num;
-        // helpers.postData('http://localhost:5000/update', city);
-        return city.population;
+        return city.population -= num;
     }
 
     howBig() {
@@ -72,7 +66,7 @@ class Community {
         }, 0);
     }
 
-    createCity({key, name, latitude, longitude, population}) {
+    createCity(key, name, latitude, longitude, population) {
         const city = new City(key, name, latitude, longitude, population);
         this.communityList.push(city);
     }

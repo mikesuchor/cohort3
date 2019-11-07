@@ -1,9 +1,10 @@
-import { Community } from './city.js';
-import helpers from './helpers.js';
+import { Community } from './cityandcommunity.js';
+import domhelpers from './domhelpers.js';
 
-const communityController = new Community();
+const url = 'http://localhost:5000/';
 
-const fetchFunctions = {
+const fetchfunctions = {
+
     async postData(url = '', data = {}) {
         const response = await fetch(url, {
             method: 'POST',
@@ -18,26 +19,38 @@ const fetchFunctions = {
             body: JSON.stringify(data)
         });
         const json = await response.json();
-        json.status = response.status;
-        json.statusText = response.statusText;
         return json;
     },
 
-    getAllCities() {
-        fetch('http://localhost:5000/all')
-        .then(request => request.json())
-        .then(data => {
-            data.map((city) => {
-                communityController.createCity(Number(city.key), city.name, Number(city.latitude), Number(city.longitude), Number(city.population));
-                helpers.createCard(Number(city.key), city.name, city.latitude, city.longitude, city.population, cities);
-            });
-        })
-        .then(() => console.log(communityController.communityList));
+    async addCity(city) {
+        await this.postData(url + 'add', city);
     },
 
-    clearAllCities() {
-        fetch('http://localhost:5000/clear');
+    async deleteCity(key) {
+        await this.postData(url + 'delete', key);
+    },
+
+    async updateCity(city) {
+        await this.postData(url + 'update', city);
+    },
+
+    async getAllCities() {
+        const data = await this.postData(url + 'all');
+        return data;
+        // const 
+        // .then(request => request.json())
+        // .then(data => {
+        //     data.map((city) => {
+        //         communityController.createCity(Number(city.key), city.name, Number(city.latitude), Number(city.longitude), Number(city.population));
+        //         helpers.createCard(Number(city.key), city.name, city.latitude, city.longitude, city.population, cities);
+        //     });
+        //     return(communityController.communityList);
+        // })
+    },
+
+    async clearAllCities() {
+        await this.postData(url + 'clear');
     }
 }
 
-export default fetchFunctions;
+export default fetchfunctions;

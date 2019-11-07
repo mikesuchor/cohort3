@@ -1,4 +1,5 @@
-const helpers = {
+const domhelpers = {
+    
     clearInputs: (input1, input2, input3, input4) => {
         input1.value = "";
         input2.value = "";
@@ -82,4 +83,4 @@ const helpers = {
     }
 }
 
-export default helpers;
+export default domhelpers;

@@ -1,5 +1,4 @@
-import { City, Community } from './city.js';
-import helpers from './helpers.js';
+import { City, Community } from './cityandcommunity.js';
 
 describe('city class methods', () => {
     test('show method', () => {
@@ -36,10 +35,6 @@ describe('city class methods', () => {
 });
 
 describe('community class methods', () => {
-    test('getLastKey method', () => {
-
-    });
-
     test('whichSphere method', () => {
         const community = new Community;
         const city = new City(1, 'Calgary', 51.0447, 114.0719, 1336000);
@@ -109,39 +104,4 @@ describe('community class methods', () => {
     test('getAllCities method', () => {
         
     });
-});
-
-describe('helper functions', () => {
-    test('clear inputs method', () => {
-        const input1 = document.createElement("input");
-        input1.value = "clear me";
-        const input2 = input1;
-        const input3 = input1;
-        const input4 = input1;
-        helpers.clearInputs(input1, input2, input3, input4);
-        expect(input1.value).toBe("");
-        expect(input2.value).toBe("");
-        expect(input3.value).toBe("");
-        expect(input4.value).toBe("");
-    });
-
-    test('create card', () => {
-        const testDiv = document.createElement("div");
-        helpers.createCard(1, "", 51.0447, 114.0719, 1336000, testDiv);
-        expect(testDiv.children[0]).toBe(undefined);
-        helpers.createCard(1, "Calgary", 51.0447, 114.0719, 1336000, testDiv);
-        expect(testDiv.children[0].id).toBe("Calgary");
-    });
-
-    test('remove card method', () => {
-        const testDiv = document.createElement("div");
-        helpers.createCard(1, "Calgary", 51.0447, 114.0719, 1336000, testDiv);
-        expect(testDiv.children[0].id).toBe("Calgary");
-        helpers.removeCard(testDiv.children[0]);
-        expect(testDiv.children[0]).toBe(undefined);
-    });
-});
-
-describe('fetch functions', () => {
-    
 });
