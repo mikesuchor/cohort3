@@ -1,5 +1,19 @@
 const functions = {
 
+    // Callback Exercise (Part 1) of November 8, 2019
+
+    processPeople: (peopleArr, callback) => {
+        const filteredPeople = [];
+        for(let person of peopleArr) {
+            if(person.province === "AB" || person.province === "BC") {
+                filteredPeople.push(callback(person));
+            }
+        }
+        return filteredPeople;
+    },
+
+    returnFullNames: (person) => `${person.fname} ${person.lname}`,
+
     // More Array Exercises (Really) of November 6, 2019
 
     balance1000: (staffArr) => {
