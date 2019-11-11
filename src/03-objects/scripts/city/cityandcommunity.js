@@ -68,7 +68,6 @@ class Community {
 
     createCity(key, name, latitude, longitude, population) {
         const city = new City(key, name, latitude, longitude, population);
-        console.log(city);
         this.communityList.push(city);
     }
 

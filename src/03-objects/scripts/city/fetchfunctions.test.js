@@ -14,6 +14,10 @@ describe('test fetch functions', () => {
         await fetchfunctions.clearAllCities();
     });
 
+    test('postData method is working', async () => {
+        expect(await fetchfunctions.postData(url + 'clear')).toEqual({});
+    });
+
     test('add a city', async () => {
         await fetchfunctions.addCity({key: 3, name: 'Buenos Aires', latitude: -34.35, longitude: 58.22, population: 2890000});
         expect(await fetchfunctions.getAllCities())

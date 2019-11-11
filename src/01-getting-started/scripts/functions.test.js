@@ -1,4 +1,4 @@
-import functions from './functions'
+import functions from './functions.js';
 
 test('Check the sizes', () => {
     expect(functions.size(-101)).toBe("negative");
@@ -18,5 +18,5 @@ test('Does that add function work?', () => {
 
 test('Does the subtract function work?', () => {
     expect(functions.subtract(2,1)).toBe(1);
-    expect(functions.add(101,202)).toBe(-101);
+    expect(functions.subtract(101,202)).toBe(-101);
 })

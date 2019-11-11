@@ -35,6 +35,17 @@ describe('city class methods', () => {
 });
 
 describe('community class methods', () => {
+    test('getLastKey method', () => {
+        const community = new Community;
+        community.createCity(1, 'Calgary', 51.0447, 114.0719, 1336000);
+        community.createCity(2, 'Edmonton', 53.5461, 113.4938, 981280);
+        expect(community.getLastKey(community.communityList)).toBe(2);
+        community.createCity(3, 'Buenos Aires', -34.35, 58.22, 2890000);
+        expect(community.getLastKey(community.communityList)).toBe(3);
+        community.createCity(0, 'Zeroville', 0, 0, 0);
+        expect(community.getLastKey(community.communityList)).toBe(3);
+    });
+
     test('whichSphere method', () => {
         const community = new Community;
         const city = new City(1, 'Calgary', 51.0447, 114.0719, 1336000);
@@ -99,9 +110,5 @@ describe('community class methods', () => {
         community.createCity(3, 'Buenos Aires', -34.35, 58.22, 2890000);
         community.clearAllCities();
         expect(community.communityList).toEqual([]);
-    });
-
-    test('getAllCities method', () => {
-        
     });
 });

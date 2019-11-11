@@ -18,7 +18,6 @@ document.addEventListener('DOMContentLoaded', async () => {
         community.createCity(Number(city.key), city.name, Number(city.latitude), Number(city.longitude), Number(city.population));
         domhelpers.createCard(Number(city.key), city.name, city.latitude, city.longitude, city.population, cities);
     });
-    console.log(community.communityList);
     key = community.getLastKey();
     community.communityList.length > 1 ? cityFunctions.classList.remove("hidden") : cityFunctions.classList.add("hidden");
 });
@@ -41,7 +40,6 @@ document.addEventListener("click", () => {
         }
         domhelpers.clearInputs(cityNameInput, cityLatitudeInput, cityLongitudeInput, cityPopulationInput);
         community.communityList.length > 1 ? cityFunctions.classList.remove("hidden") : cityFunctions.classList.add("hidden");
-        console.log(community.communityList);
     }
 
     if(event.target.className === "clear-cities-button action-button") { 

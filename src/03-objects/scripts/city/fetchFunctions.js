@@ -5,7 +5,7 @@ const url = 'http://localhost:5000/';
 
 const fetchfunctions = {
 
-    async postData(url = '', data = {}) {
+    async postData(url, data) {
         const response = await fetch(url, {
             method: 'POST',
             mode: 'cors',
@@ -35,17 +35,7 @@ const fetchfunctions = {
     },
 
     async getAllCities() {
-        const data = await this.postData(url + 'all');
-        return data;
-        // const 
-        // .then(request => request.json())
-        // .then(data => {
-        //     data.map((city) => {
-        //         communityController.createCity(Number(city.key), city.name, Number(city.latitude), Number(city.longitude), Number(city.population));
-        //         helpers.createCard(Number(city.key), city.name, city.latitude, city.longitude, city.population, cities);
-        //     });
-        //     return(communityController.communityList);
-        // })
+        return await this.postData(url + 'all');
     },
 
     async clearAllCities() {
