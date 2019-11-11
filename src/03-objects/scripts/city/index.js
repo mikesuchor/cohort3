@@ -18,7 +18,7 @@ document.addEventListener('DOMContentLoaded', async () => {
         community.createCity(Number(city.key), city.name, Number(city.latitude), Number(city.longitude), Number(city.population));
         domhelpers.createCard(Number(city.key), city.name, city.latitude, city.longitude, city.population, cities);
     });
-    community.communityList = data;
+    console.log(community.communityList);
     key = community.getLastKey();
     community.communityList.length > 1 ? cityFunctions.classList.remove("hidden") : cityFunctions.classList.add("hidden");
 });
@@ -54,8 +54,9 @@ document.addEventListener("click", () => {
     }
 
     if(event.target.className === "fas fa-times") {
-        community.deleteCity(event.target.parentNode.getAttribute("key"));
-        fetchfunctions.deleteCity({key});
+        const keyAttribute = Number(event.target.parentNode.getAttribute("key"));
+        community.deleteCity(keyAttribute);
+        fetchfunctions.deleteCity({key: keyAttribute});
         domhelpers.removeCard(event.target.parentNode);
         community.communityList.length > 1 ? cityFunctions.classList.remove("hidden") : cityFunctions.classList.add("hidden");
     }
@@ -78,21 +79,21 @@ document.addEventListener("click", () => {
 
     if(event.target.className === "movedin-button action-button" || event.target.className === "fas fa-sign-in-alt") {
         const cityIndex = community.communityList.findIndex(x => x.name === event.target.parentNode.id);
-        const inputPopulation = event.target.previousSibling;
-        // Refactor this
-        event.target.previousSibling.previousSibling.previousSibling.innerText = 
-            community.communityList[cityIndex]
-                .movedIn(community.communityList[cityIndex], Number(inputPopulation.value));
+        const parentKey = event.target.parentNode.getAttribute("key");
+        const inputPopulation = document.getElementById(`input${parentKey}`);
+        const outputPopulation = document.getElementById(`population${parentKey}`);
+        outputPopulation.innerText = community.communityList[cityIndex]
+            .movedIn(community.communityList[cityIndex], Number(inputPopulation.value));
         inputPopulation.value = "";
     }
 
     if(event.target.className === "movedout-button action-button" || event.target.className === "fas fa-sign-out-alt") {
         const cityIndex = community.communityList.findIndex(x => x.name === event.target.parentNode.id);
-        const inputPopulation = event.target.previousSibling.previousSibling;
-        // Refactor this
-        event.target.previousSibling.previousSibling.previousSibling.previousSibling.innerText = 
-            community.communityList[cityIndex]
-                .movedOut(community.communityList[cityIndex], Number(inputPopulation.value));
+        const parentKey = event.target.parentNode.getAttribute("key");
+        const inputPopulation = document.getElementById(`input${parentKey}`);
+        const outputPopulation = document.getElementById(`population${parentKey}`);
+        outputPopulation.innerText = community.communityList[cityIndex]
+            .movedOut(community.communityList[cityIndex], Number(inputPopulation.value));
         inputPopulation.value = "";
     }
 });
