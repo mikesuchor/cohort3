@@ -29,6 +29,7 @@ document.addEventListener("click", () => {
         accountController.removeAccount(event.target.parentNode.id);
         helpers.removeCard(event.target.parentNode);
         accountController.accounts.length > 1 ? accountFunctions.classList.remove("hidden") : accountFunctions.classList.add("hidden");
+        accountFunctionsOutput.innerHTML = '';
     }
 
     if(event.target.className === "total-button action-button" || event.target.className === "fas fa-coins") {

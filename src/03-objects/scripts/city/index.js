@@ -20,6 +20,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     });
     key = community.getLastKey();
     community.communityList.length > 1 ? cityFunctions.classList.remove("hidden") : cityFunctions.classList.add("hidden");
+    console.log(community.communityList);
 });
 
 document.addEventListener("click", () => {
@@ -34,7 +35,7 @@ document.addEventListener("click", () => {
         if(!duplicate && cityNameInput.value) {
             key++;
             const city = {key: Number(key), name: cityNameInput.value, latitude: Number(cityLatitudeInput.value), longitude: Number(cityLongitudeInput.value), population: Number(cityPopulationInput.value)};
-            community.createCity(city);
+            community.createCity(Number(key), cityNameInput.value, Number(cityLatitudeInput.value), Number(cityLongitudeInput.value), Number(cityPopulationInput.value));
             fetchfunctions.addCity(city);
             domhelpers.createCard(key, cityNameInput.value, cityLatitudeInput.value, cityLongitudeInput.value, cityPopulationInput.value, cities);
         }
