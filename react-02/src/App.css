@@ -1,14 +1,10 @@
-.App {
-  text-align: center;
-}
-
 .App-logo {
   height: 40vmin;
 }
 
 .App-header {
   background-color: #282c34;
-  min-height: 100vh;
+  min-height: 80vh;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -21,41 +17,76 @@
   color: #09d3ac;
 }
 
-.icons:nth-child(even) {
-  animation: icons-spin-clockwise infinite 5s linear;
+.App-footer {
+  font-size: 16px;
+  margin-top: 15px;
+  text-align: center;
 }
 
-.icons:nth-child(odd) {
-  animation: icons-spin-counter infinite 5s linear;
+.icon {
+  height: 56px;
+  padding: 10px;
 }
 
-.icons:nth-child(8) {
-  animation: icons-spin-crazy infinite 1s linear;
+.icon:hover {
+  background: rgb(217, 255, 205);
 }
 
-@keyframes icons-spin-clockwise {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+body {
+  font: 28px "Century Gothic", Futura, sans-serif;
 }
 
-@keyframes icons-spin-counter {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(-360deg);
-  }
+ol, ul {
+  padding-left: 30px;
 }
 
-@keyframes icons-spin-crazy {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.board-row:after {
+  clear: both;
+  content: "";
+  display: table;
+}
+
+.status {
+  margin-bottom: 10px;
+  text-align: center;
+}
+
+.square {
+  background: #fff;
+  border: 1px solid #999;
+  float: left;
+  font-size: 34px;
+  font-weight: bold;
+  line-height: 68px;
+  height: 68px;
+  margin-right: -1px;
+  margin-top: -1px;
+  padding: 0;
+  text-align: center;
+  width: 68px;
+}
+
+.square:hover {
+  background: #eee;
+}
+
+.square:focus {
+  outline: none;
+}
+
+.kbd-navigation .square:focus {
+  background: #ddd;
+}
+
+.game {
+  display: flex;
+  flex-direction: row;
+}
+
+.game-info {
+  margin-left: 20px;
+}
+
+.game-board {
+  margin: auto;
 }
