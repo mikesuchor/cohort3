@@ -29,7 +29,11 @@
 }
 
 .icon:hover {
-  background: rgb(217, 255, 205);
+  background: #09d3ac;
+}
+
+.active {
+  background: #09d3ac;
 }
 
 body {
