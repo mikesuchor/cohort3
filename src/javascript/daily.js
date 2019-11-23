@@ -1,4 +1,44 @@
-const functions = {
+// Three Ways of Functions Exercise of November 22, 2019
+
+let myArray = [
+    {num: 5,str: "apples", origin:"BC"},
+    {num: 7,str: "oranges", origin:"Florida"},
+    {num: 2,str: "lemons", origin:"Mexico"},
+    {num: 8,str: "bananas", origin:"Ecuador"},
+    {num: 6,str: "avocados", origin:"Mexico"},
+    {num: 4,str: "pineapple", origin:"Brazil"},
+    {num: 3,str: "blueberries", origin:"Chile"},
+    {num: 9,str: "pears", origin:"Oregon"},
+    {num: 1,str: "cantaloupe", origin:"California"}
+];
+
+// Anonymous Function for Sorting Numerically Ascending
+export const sortNumberAsc = function(a, b) {
+    return a.num - b.num;
+};
+
+// Named Function for Sorting Fruit Alphabetically in Ascending Order
+export function sortFruitAsc(a, b) {
+    if(a.str < b.str) return -1;
+    if(a.str > b.str) return 1;
+    return 0;
+};
+
+// Named Function for Sorting Origin Alphabetically in Descending Order
+export const sortOriginDesc = (a, b) => {
+    if(a.origin > b.origin) return -1;
+    if(a.origin < b.origin) return 1;
+    return 0;
+};
+
+myArray.sort(sortNumberAsc);
+console.log("myArray Number Sorted = ", myArray);
+myArray.sort(sortFruitAsc);
+console.log("myArray Fruit Sorted = ", myArray);
+myArray.sort(sortOriginDesc);
+console.log("myArray Origin Sorted = ", myArray);
+
+export const functions = {
 
     // Callback Exercise (Part 2) of November 21, 2019
 
@@ -210,5 +250,3 @@ const functions = {
         return false;
     }
 }
-
-export default functions;

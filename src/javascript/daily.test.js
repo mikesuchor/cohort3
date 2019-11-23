@@ -1,4 +1,51 @@
-import functions from './daily';
+import { sortNumberAsc, sortFruitAsc, sortOriginDesc, functions } from './daily';
+
+// Three Ways of Functions Exercise of November 22, 2019
+
+test('Sort array numerically ascending', () => {
+    const testArray = [
+        {num: 5,str: "apples", origin:"BC"},
+        {num: 7,str: "oranges", origin:"Florida"},
+        {num: 2,str: "lemons", origin:"Mexico"}
+    ];
+    expect(testArray[0].num).toBe(5);
+    expect(testArray.sort(sortNumberAsc)[0].num).toBe(2);
+    expect(testArray.sort(sortNumberAsc)[2].num).toBe(7);
+});
+
+test('Sort array by fruit alphabetically ascending', () => {
+    const testArray = [
+        {num: 5,str: "apples", origin:"BC"},
+        {num: 7,str: "oranges", origin:"Florida"},
+        {num: 2,str: "lemons", origin:"Mexico"}
+    ];
+    expect(testArray[0].str).toBe("apples");
+    expect(testArray.sort(sortFruitAsc)[0].str).toBe("apples");
+    expect(testArray.sort(sortFruitAsc)[2].str).toBe("oranges");
+});
+
+test('Sort array by origin alphabetically descending', () => {
+    const testArray = [
+        {num: 5,str: "apples", origin:"BC"},
+        {num: 7,str: "oranges", origin:"Florida"},
+        {num: 2,str: "lemons", origin:"Mexico"}
+    ];
+    expect(testArray[0].origin).toBe("BC");
+    expect(testArray.sort(sortOriginDesc)[0].origin).toBe("Mexico");
+    expect(testArray.sort(sortOriginDesc)[2].origin).toBe("BC");
+});
+
+let myArray = [
+    {num: 5,str: "apples", origin:"BC"},
+    {num: 7,str: "oranges", origin:"Florida"},
+    {num: 2,str: "lemons", origin:"Mexico"},
+    {num: 8,str: "bananas", origin:"Ecuador"},
+    {num: 6,str: "avocados", origin:"Mexico"},
+    {num: 4,str: "pineapple", origin:"Brazil"},
+    {num: 3,str: "blueberries", origin:"Chile"},
+    {num: 9,str: "pears", origin:"Oregon"},
+    {num: 1,str: "cantaloupe", origin:"California"}
+];
 
 // Callback Exercise (Part 2) of November 21, 2019
 
@@ -22,7 +69,6 @@ test('Return people object (total people, total age, average age) from BC and AB
     testArray.push({fname:"Anne", lname:"Bird", province:"SK", age:35});
     expect(functions.makePeopleObject(testArray)).toEqual({"totalPeople": 2, "totalAge": 94, "averageAge": 47});
 });
-
 
 // Callback Exercise (Part 1) of November 8, 2019
 
