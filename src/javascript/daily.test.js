@@ -8,9 +8,14 @@ test('Sort array numerically ascending', () => {
         {num: 7,str: "oranges", origin:"Florida"},
         {num: 2,str: "lemons", origin:"Mexico"}
     ];
+    const equalArray = [
+        {num: 3,str: "apples", origin:"BC"},
+        {num: 3,str: "oranges", origin:"Florida"},
+    ];
     expect(testArray[0].num).toBe(5);
     expect(testArray.sort(sortNumberAsc)[0].num).toBe(2);
     expect(testArray.sort(sortNumberAsc)[2].num).toBe(7);
+    expect(equalArray.sort(sortNumberAsc)[0].str).toBe("apples");
 });
 
 test('Sort array by fruit alphabetically ascending', () => {
@@ -19,9 +24,14 @@ test('Sort array by fruit alphabetically ascending', () => {
         {num: 7,str: "oranges", origin:"Florida"},
         {num: 2,str: "lemons", origin:"Mexico"}
     ];
+    const equalArray = [
+        {num: 5,str: "apples", origin:"BC"},
+        {num: 7,str: "apples", origin:"Florida"},
+    ];
     expect(testArray[0].str).toBe("apples");
     expect(testArray.sort(sortFruitAsc)[0].str).toBe("apples");
     expect(testArray.sort(sortFruitAsc)[2].str).toBe("oranges");
+    expect(equalArray.sort(sortFruitAsc)[0].num).toBe(5);
 });
 
 test('Sort array by origin alphabetically descending', () => {
@@ -30,9 +40,14 @@ test('Sort array by origin alphabetically descending', () => {
         {num: 7,str: "oranges", origin:"Florida"},
         {num: 2,str: "lemons", origin:"Mexico"}
     ];
+    const equalArray = [
+        {num: 5,str: "apples", origin:"BC"},
+        {num: 7,str: "oranges", origin:"BC"},
+    ];
     expect(testArray[0].origin).toBe("BC");
     expect(testArray.sort(sortOriginDesc)[0].origin).toBe("Mexico");
     expect(testArray.sort(sortOriginDesc)[2].origin).toBe("BC");
+    expect(equalArray.sort(sortOriginDesc)[0].num).toBe(5);
 });
 
 let myArray = [
