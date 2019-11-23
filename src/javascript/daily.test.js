@@ -2,7 +2,17 @@ import functions from './daily';
 
 // Callback Exercise (Part 2) of November 21, 2019
 
-test('Return total number of people from BC and AB', () => {
+test('Return person', () => {
+    const person = {fname:"Alex", lname:"Smith", province:"BC", age:33};
+    expect(functions.returnPerson(person)).toBe(person);
+});
+
+test('Return age of person', () => {
+    const person = {fname:"Alex", lname:"Smith", province:"BC", age:33};
+    expect(functions.returnAge(person)).toBe(33);
+});
+
+test('Return people object (total people, total age, average age) from BC and AB', () => {
     const testArray = [
         {fname:"Alex", lname:"Smith", province:"BC", age:33},
 	    {fname:"Angela", lname:"Jones", province:"AB", age:61}
@@ -13,11 +23,12 @@ test('Return total number of people from BC and AB', () => {
     expect(functions.makePeopleObject(testArray)).toEqual({"totalPeople": 2, "totalAge": 94, "averageAge": 47});
 });
 
+
 // Callback Exercise (Part 1) of November 8, 2019
 
 test('Process people function with generic callback functions', () => {
-    const changeNameTo123 = (person) => 123;
-    const changeNameToLarry = (person) => "Larry Shumlich";
+    const changeNameTo123 = () => 123;
+    const changeNameToLarry = () => "Larry Shumlich";
     expect(functions.processPeople(people, changeNameTo123)[0]).toEqual(123);
     expect(functions.processPeople(people, changeNameToLarry)[0]).toEqual("Larry Shumlich");
 })

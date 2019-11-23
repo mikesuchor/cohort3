@@ -4,8 +4,8 @@ const functions = {
 
     makePeopleObject: (peopleArr) => {
         const peopleObject = {
-            totalPeople: functions.processPeople(peopleArr, functions.returnTotalPeople).length,
-            totalAge: functions.processPeople(peopleArr, functions.returnTotalAge).reduce((total, age) => {
+            totalPeople: functions.processPeople(peopleArr, functions.returnPerson).length,
+            totalAge: functions.processPeople(peopleArr, functions.returnAge).reduce((total, age) => {
                 return total += age;
             }, 0)
         }
@@ -13,8 +13,8 @@ const functions = {
         return peopleObject;
     },
 
-    returnTotalPeople: (person) => person,
-    returnTotalAge: (person) => person.age,
+    returnPerson: (person) => person,
+    returnAge: (person) => person.age,
 
     // Callback Exercise (Part 1) of November 8, 2019
 
