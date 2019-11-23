@@ -1,5 +1,21 @@
 const functions = {
 
+    // Callback Exercise (Part 2) of November 21, 2019
+
+    makePeopleObject: (peopleArr) => {
+        const peopleObject = {
+            totalPeople: functions.processPeople(peopleArr, functions.returnTotalPeople).length,
+            totalAge: functions.processPeople(peopleArr, functions.returnTotalAge).reduce((total, age) => {
+                return total += age;
+            }, 0)
+        }
+        peopleObject.averageAge = Math.round((peopleObject.totalAge / peopleObject.totalPeople) * 100) / 100;
+        return peopleObject;
+    },
+
+    returnTotalPeople: (person) => person,
+    returnTotalAge: (person) => person.age,
+
     // Callback Exercise (Part 1) of November 8, 2019
 
     processPeople: (peopleArr, callback) => {

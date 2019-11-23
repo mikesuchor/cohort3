@@ -1,5 +1,18 @@
 import functions from './daily';
 
+// Callback Exercise (Part 2) of November 21, 2019
+
+test('Return total number of people from BC and AB', () => {
+    const testArray = [
+        {fname:"Alex", lname:"Smith", province:"BC", age:33},
+	    {fname:"Angela", lname:"Jones", province:"AB", age:61}
+    ];
+    expect(functions.makePeopleObject(testArray)).toEqual({"totalPeople": 2, "totalAge": 94, "averageAge": 47});
+    // Not from BC or AB, should not be included
+    testArray.push({fname:"Anne", lname:"Bird", province:"SK", age:35});
+    expect(functions.makePeopleObject(testArray)).toEqual({"totalPeople": 2, "totalAge": 94, "averageAge": 47});
+});
+
 // Callback Exercise (Part 1) of November 8, 2019
 
 test('Process people function with generic callback functions', () => {
