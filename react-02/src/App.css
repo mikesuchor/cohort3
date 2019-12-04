@@ -1,63 +1,103 @@
+/* http://meyerweb.com/eric/tools/css/reset/ 
+   v2.0 | 20110126
+   License: none (public domain)
+*/
+html, body, div, span, h1, h2, h3, h4, h5, h6, p, a, img, ol, ul, li,form, label,
+article, aside, canvas, footer, header, nav, section {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+}
+body {
+  box-sizing: border-box;
+  line-height: 1;
+  font: 10px "Century Gothic", Futura, sans-serif;
+  background: var(--light-grey);
+}
+h1 {
+  font-size: 2.4em;
+}
+h2 {
+  font-size: 1.8em;
+}
+label {
+  font-size: 1.6em;
+}
+
+/* COLORS */
+:root {
+  --light: #FFFCEC;
+  --light-grey: #DBCDBE;
+  --gold: #FEDB1C;
+  --main-blue: #2F577D; 
+  --dark-blue: #282C34;
+  --dark-red: #C22532;
+}
+
+/* APP CSS*/
+#message-handler {
+  color: var(--light);
+  background: var(--dark-red);
+  font-size: 1.8em;
+  line-height: 3em;
+  text-align: center;
+}
+#apps {
+  display: flex;
+}
+.navbar {
+  width: 5vw;
+  display: flex;
+  flex-direction: column;
+  background: var(--dark-blue); 
+  height: 100vh;
+  padding-top: 2em;
+}
+.icon {
+  color: var(--light);
+  padding-bottom: 1.25em;
+  text-align: center;
+  margin: 0 auto;
+  font-size: 2.8em;
+}
+.icon:hover {
+  color: var(--gold);
+}
 .App-logo {
   height: 40vmin;
 }
-
 .App-header {
-  background-color: #282c34;
-  min-height: 80vh;
+  background-color: var(--dark-blue);
+  height: 100vh;
+  width: 100vw;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  color: var(--light-grey);
 }
-
-.App-link {
-  color: #09d3ac;
-}
-
 .App-footer {
-  font-size: 16px;
-  margin-top: 15px;
+  font-size: 1.6em;
   text-align: center;
 }
 
-.icon {
-  height: 56px;
-  padding: 10px;
-}
-
-.icon:hover {
-  background: #09d3ac;
-}
-
-.active {
-  background: #09d3ac;
-}
-
-body {
-  font: 28px "Century Gothic", Futura, sans-serif;
-}
-
-ol, ul {
-  padding-left: 30px;
-}
+/* TIC-TAC-TOE CSS */
 
 .board-row:after {
   clear: both;
   content: "";
   display: table;
 }
-
 .status {
   margin-bottom: 10px;
   text-align: center;
 }
-
 .square {
-  background: #fff;
-  border: 1px solid #999;
+  background: var(--light);
+  border: 1px solid var(--light-grey);
   float: left;
   font-size: 34px;
   font-weight: bold;
@@ -69,28 +109,122 @@ ol, ul {
   text-align: center;
   width: 68px;
 }
-
 .square:hover {
-  background: #eee;
+  background: var(--light);
 }
-
 .square:focus {
   outline: none;
 }
-
 .kbd-navigation .square:focus {
-  background: #ddd;
+  background: var(--light-grey);
 }
-
 .game {
   display: flex;
   flex-direction: row;
 }
-
 .game-info {
   margin-left: 20px;
 }
-
 .game-board {
   margin: auto;
 }
+
+/* ACCOUNTS CSS*/
+
+#accounts-main {
+  display: flex;
+}
+#accounts-column {
+  width: 35vw;
+}
+.widget {
+  background-color: var(--light);
+  margin: 2em 0 0 2em;
+}
+.widget-title {
+  padding: 0.2em;
+  background: var(--main-blue);
+  color: var(--light);
+  text-align: center;
+}
+.widget-body {
+  padding: 0 2em 2em 2em;
+  text-align: center;
+}
+.add-account-form {
+  padding-top: 2em;
+}
+.account-input {
+  height: 2em;
+  margin: 0 1em;
+  width: 8.5vw;
+}
+.account-balance-input {
+  width: 5vw;
+}
+.account-button {
+  height: 2.4em;
+  border: none;
+  color: var(--light);
+  padding: 0 1em;
+  background: var(--main-blue);
+}
+.account-list {
+  list-style-type: none;
+  padding-left: 0;
+}
+.account {
+  position: relative;
+  display: flex;
+  flex-wrap: wrap;
+  padding: 1.5em 0 0.5em 0;
+  border-bottom: 1px solid var(--light-grey);
+}
+.account h2 {
+  font-size: 2.4em;
+  width: 50%;
+  text-transform: uppercase;
+  font-weight: 800;
+}
+.account-name {
+  text-align: left;
+  flex: 2;
+}
+.account-balance {
+  text-align: right;
+  flex: 1;
+  padding-right: 1vw;
+}
+.delete-icon {
+  position: absolute;
+  padding-top: 1.3em;
+  text-align: right;
+  color: var(--dark-red);
+  font-size: 1.5em;
+  bottom: 78%;
+  left: 100%;
+}
+.account-button:hover, .delete-icon:hover {
+  cursor: pointer;
+}
+.amount-form {
+  display: flex;
+  width: 100%;
+}
+.amount-input {
+  height: 2em;
+  margin: 0.7em 0.5em 0 0;
+  flex: 3;
+}
+.amount-button {
+  margin: 0.7em 0.5em 0 0;
+  flex: 1; 
+}
+.account-total {
+  font-size: 2.4em;
+  text-transform: uppercase;
+  font-weight: 800;
+  padding-top: 15px;
+}
+
+/* CITIES */

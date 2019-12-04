@@ -3,15 +3,18 @@ import CreateAccountWidget from './CreateAccountWidget';
 import MyAccountsWidget from './MyAccountsWidget';
 import ChartWidget from './ChartWidget';
 
+import { AccountController } from './Functions';
+
 class AccountsMain extends React.Component {
     constructor() {
         super();
         this.state = {
             accountName: "",
-            accountBalance: 0,
-            amount: 0,
+            accountBalance: "",
+            withdrawDepositAmount: 0,
             accounts: []
         };
+        this.accountController = new AccountController();
     }
 
     handleInput = (event) => {
@@ -20,36 +23,43 @@ class AccountsMain extends React.Component {
 
     handleAddAccount = (event) => {
         event.preventDefault();
-        if(!this.checkDuplicates(this.state.accountName)) {
+        if(!this.state.accountName) {
+            this.props.displayMessage("No account name entered, please try again.");
+        } else if(!this.checkDuplicates(this.state.accountName)) {
+            this.accountController.addAccount(this.state.accountName, this.state.accountBalance, this.state.accountName);
             this.setState((prevState) => ({
-                accounts: prevState.accounts.concat({name: this.state.accountName, balance: Number(this.state.accountBalance), id: this.state.accountName})
+                accountName: "",
+                accountBalance: "",
+                accounts: prevState.accounts.concat({accountName: this.state.accountName, accountBalance: Number(this.state.accountBalance), accountId: this.state.accountName})
             }));
             this.props.displayMessage("");
         } else {
-            this.props.displayMessage("Duplicate account name detected, please try again.");
+            this.props.displayMessage("Duplicate account name entered, please try again.");
         }
+        event.target.value = '';
     }
 
     handleDelete = (id) => {
+        this.accountController.removeAccount(this.state.accountName);
         const accounts = this.state.accounts.filter((account) => {
-            return id !== account.id;
+            return id !== account.accountId;
         })
         this.setState({accounts: accounts});
     }
  
     handleDepositAndWithdrawal = (id, type) => {
         this.props.displayMessage("");
-        if(this.state.amount > 0) {
+        if(this.state.withdrawDepositAmount > 0) {
             const accounts = this.state.accounts.map((account) => {
-                if(id === account.id) {
-                    if(type === "deposit") account.balance += Number(this.state.amount);
-                    if(type === "withdrawal") account.balance -= Number(this.state.amount);
+                if(id === account.accountId) {
+                    if(type === "deposit") account.accountBalance += Number(this.state.withdrawDepositAmount);
+                    if(type === "withdrawal") account.accountBalance -= Number(this.state.withdrawDepositAmount);
                 }
                 return account;
             })
             this.setState({
                 accounts: accounts,
-                amount: 0
+                withdrawDepositAmount: 0
             });
         } else {
             this.props.displayMessage("Please enter a positive number.");
@@ -59,7 +69,7 @@ class AccountsMain extends React.Component {
     checkDuplicates = (accountName) => {
         let duplicate = false;
         this.state.accounts.forEach((account) => {
-            if(accountName === account.name) {
+            if(accountName === account.accountName) {
                 duplicate = true;
             }
         })
@@ -70,7 +80,11 @@ class AccountsMain extends React.Component {
         return(
             <div id="accounts-main">
                 <div id="accounts-column">
-                    <CreateAccountWidget handleInput={this.handleInput} handleAddAccount={this.handleAddAccount} />
+                    <CreateAccountWidget
+                        handleInput={this.handleInput}
+                        handleAddAccount={this.handleAddAccount}
+                        accountBalance={this.state.accountBalance}
+                        accountName={this.state.accountName} />
                     {this.state.accounts.length > 0
                         ? <MyAccountsWidget
                             accounts={this.state.accounts}
